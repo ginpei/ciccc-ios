@@ -15,7 +15,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        window = UIWindow(frame: UIScreen.main.bounds)
+        
+        let favoritesVC = ViewController()
+        favoritesVC.title = "111"
+        favoritesVC.view.backgroundColor = UIColor.orange
+        favoritesVC.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 0)
+        
+        let downloadsVC = ViewController()
+        downloadsVC.title = "222"
+        downloadsVC.view.backgroundColor = UIColor.blue
+        downloadsVC.tabBarItem = UITabBarItem(tabBarSystemItem: .history, tag: 1)
+        
+        let tabBarController = UITabBarController()
+        tabBarController.viewControllers = [favoritesVC, downloadsVC].map { UINavigationController(rootViewController: $0) }
+        
+        window?.rootViewController = tabBarController
+        window?.makeKeyAndVisible()
+        
         return true
     }
 
