@@ -1,9 +1,9 @@
 //
 //  AppDelegate.swift
-//  assignment01
+//  ProgrammaticView
 //
-//  Created by Ginpei on 2017-05-29.
-//  Copyright © 2017 Ginpei. All rights reserved.
+//  Created by Derrick Park on 2017-05-24.
+//  Copyright © 2017 Derrick Park. All rights reserved.
 //
 
 import UIKit
