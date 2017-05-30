@@ -135,7 +135,7 @@ class ViewController: UIViewController {
         NSLayoutConstraint.init(item: blue1BoxView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 50.0).isActive = true
         NSLayoutConstraint.init(item: blue1BoxView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 50.0).isActive = true
         blue1BoxView.centerXAnchor.constraint(equalTo: framingView.centerXAnchor).isActive = true
-        blue1BoxView.centerYAnchor.constraint(equalTo: framingView.centerYAnchor, constant: -100).isActive = true
+        NSLayoutConstraint.init(item: blue1BoxView, attribute: .centerY, relatedBy: .equal, toItem: framingView, attribute: .centerY, multiplier: 0.5, constant: 0.0).isActive = true
         
         blue2BoxView.translatesAutoresizingMaskIntoConstraints = false
         blue2BoxView.backgroundColor = UIColor.blue
@@ -153,7 +153,7 @@ class ViewController: UIViewController {
         NSLayoutConstraint.init(item: blue3BoxView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 50.0).isActive = true
         NSLayoutConstraint.init(item: blue3BoxView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 50.0).isActive = true
         blue3BoxView.centerXAnchor.constraint(equalTo: framingView.centerXAnchor).isActive = true
-        blue3BoxView.centerYAnchor.constraint(equalTo: framingView.centerYAnchor, constant: 100).isActive = true
+        NSLayoutConstraint.init(item: blue3BoxView, attribute: .centerY, relatedBy: .equal, toItem: framingView, attribute: .centerY, multiplier: 1.5, constant: 0.0).isActive = true
     }
 
     func resizeFramingView(_ sender: UIButton) {
