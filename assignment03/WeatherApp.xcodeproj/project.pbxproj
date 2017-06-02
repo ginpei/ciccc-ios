@@ -11,6 +11,8 @@
 		4EBB68BA1ED8C5BE00F32361 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBB68B91ED8C5BE00F32361 /* ViewController.swift */; };
 		4EBB68BF1ED8C5BE00F32361 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4EBB68BE1ED8C5BE00F32361 /* Assets.xcassets */; };
 		4EBB68C21ED8C5BE00F32361 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EBB68C01ED8C5BE00F32361 /* LaunchScreen.storyboard */; };
+		E49A467B1EDF894A00BE4DAE /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49A467A1EDF894A00BE4DAE /* City.swift */; };
+		E49A467D1EDF8B6800BE4DAE /* CityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49A467C1EDF8B6800BE4DAE /* CityViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +22,8 @@
 		4EBB68BE1ED8C5BE00F32361 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4EBB68C11ED8C5BE00F32361 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4EBB68C31ED8C5BE00F32361 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E49A467A1EDF894A00BE4DAE /* City.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
+		E49A467C1EDF8B6800BE4DAE /* CityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,11 +56,13 @@
 		4EBB68B61ED8C5BE00F32361 /* WeatherApp */ = {
 			isa = PBXGroup;
 			children = (
+				4EBB68C31ED8C5BE00F32361 /* Info.plist */,
 				4EBB68B71ED8C5BE00F32361 /* AppDelegate.swift */,
+				E49A467A1EDF894A00BE4DAE /* City.swift */,
+				E49A467C1EDF8B6800BE4DAE /* CityViewController.swift */,
 				4EBB68B91ED8C5BE00F32361 /* ViewController.swift */,
 				4EBB68BE1ED8C5BE00F32361 /* Assets.xcassets */,
 				4EBB68C01ED8C5BE00F32361 /* LaunchScreen.storyboard */,
-				4EBB68C31ED8C5BE00F32361 /* Info.plist */,
 			);
 			path = WeatherApp;
 			sourceTree = "<group>";
@@ -134,6 +140,8 @@
 			files = (
 				4EBB68BA1ED8C5BE00F32361 /* ViewController.swift in Sources */,
 				4EBB68B81ED8C5BE00F32361 /* AppDelegate.swift in Sources */,
+				E49A467B1EDF894A00BE4DAE /* City.swift in Sources */,
+				E49A467D1EDF8B6800BE4DAE /* CityViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,6 +299,7 @@
 				4EBB68C81ED8C5BE00F32361 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
