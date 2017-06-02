@@ -33,6 +33,16 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         view.addSubview(scrollView)
     }
     
+    func scrollViewDidZoom(_ scrollView: UIScrollView) {
+        let imageViewSize = imageView.frame.size
+        let scrollViewSize = scrollView.bounds.size
+        
+        let vPadding = imageViewSize.height < scrollViewSize.height ? (scrollViewSize.height - imageViewSize.height) / 2 : 0
+        let hPadding = imageViewSize.width < scrollViewSize.width ? (scrollViewSize.width - imageViewSize.width) / 2 : 0
+        
+        scrollView.contentInset = UIEdgeInsets(top: vPadding, left: hPadding, bottom: vPadding, right: hPadding)
+    }
+    
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return imageView
     }
