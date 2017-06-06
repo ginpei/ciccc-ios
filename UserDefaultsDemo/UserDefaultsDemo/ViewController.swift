@@ -9,10 +9,19 @@
 import UIKit
 
 class ViewController: UIViewController {
+    @IBOutlet weak var mySwitch: UISwitch!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        if let isOn = UserDefaults.standard.value(forKey: "isOn") as? Bool {
+            toggleBgColor(isOn)
+            mySwitch.setOn(isOn, animated: false)
+        }
+        else {
+            toggleBgColor(false)
+            mySwitch.setOn(false, animated: false)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -20,6 +29,19 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-
+    @IBAction func switchChanged(_ sender: Any) {
+        toggleBgColor(mySwitch.isOn)
+        
+        UserDefaults.standard.set(mySwitch.isOn, forKey: "isOn")
+    }
+    
+    func toggleBgColor(_ isOn: Bool) {
+        if isOn {
+            view.backgroundColor = UIColor.blue
+        }
+        else {
+            view.backgroundColor = UIColor.orange
+        }
+    }
 }
 
