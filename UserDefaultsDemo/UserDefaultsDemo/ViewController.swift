@@ -14,14 +14,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let isOn = UserDefaults.standard.value(forKey: "isOn") as? Bool {
-            toggleBgColor(isOn)
-            mySwitch.setOn(isOn, animated: false)
-        }
-        else {
-            toggleBgColor(false)
-            mySwitch.setOn(false, animated: false)
-        }
+        let isOn = self.isOn()
+        toggleBgColor(isOn)
+        mySwitch.setOn(isOn, animated: false)
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,6 +28,15 @@ class ViewController: UIViewController {
         toggleBgColor(mySwitch.isOn)
         
         UserDefaults.standard.set(mySwitch.isOn, forKey: "isOn")
+    }
+    
+    func isOn() -> Bool {
+        if let isOn = UserDefaults.standard.value(forKey: "isOn") as? Bool {
+            return isOn
+        }
+        else {
+            return false
+        }
     }
     
     func toggleBgColor(_ isOn: Bool) {
