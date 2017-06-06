@@ -26,8 +26,6 @@ class ViewController: UIViewController {
 
     @IBAction func switchChanged(_ sender: Any) {
         toggleBgColor(mySwitch.isOn)
-        
-        UserDefaults.standard.set(mySwitch.isOn, forKey: "isOn")
     }
     
     func isOn() -> Bool {
@@ -46,6 +44,7 @@ class ViewController: UIViewController {
         else {
             view.backgroundColor = UIColor.orange
         }
+        UserDefaults.standard.set(isOn, forKey: "isOn")
     }
 }
 
