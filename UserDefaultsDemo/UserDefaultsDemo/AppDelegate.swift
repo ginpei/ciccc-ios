@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  UserDefaultDemo
+//  UserDefaultsDemo
 //
 //  Created by Ginpei on 2017-06-06.
 //  Copyright © 2017 Ginpei. All rights reserved.
