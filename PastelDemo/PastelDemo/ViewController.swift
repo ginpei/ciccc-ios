@@ -7,12 +7,16 @@
 //
 
 import UIKit
+import Pastel
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        let pastelView1 = PastelView(frame: view.bounds)
+        pastelView1.startAnimation()
+        view.insertSubview(pastelView1, at: 0)
     }
 
     override func didReceiveMemoryWarning() {

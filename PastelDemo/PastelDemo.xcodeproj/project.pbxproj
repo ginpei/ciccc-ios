@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7F60BF951FA27EB93FF7E41A /* Pods_PastelDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D23FEE7174AA057EE782342 /* Pods_PastelDemo.framework */; };
 		E40FA8151EE8A03300772F62 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40FA8141EE8A03300772F62 /* AppDelegate.swift */; };
 		E40FA8171EE8A03300772F62 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40FA8161EE8A03300772F62 /* ViewController.swift */; };
 		E40FA81A1EE8A03300772F62 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E40FA8181EE8A03300772F62 /* Main.storyboard */; };
@@ -15,6 +16,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		267C6E05FD6B390C60AC91CC /* Pods-PastelDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PastelDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PastelDemo/Pods-PastelDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		4D23FEE7174AA057EE782342 /* Pods_PastelDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PastelDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C390269048C1564EB4A6BACE /* Pods-PastelDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PastelDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-PastelDemo/Pods-PastelDemo.release.xcconfig"; sourceTree = "<group>"; };
 		E40FA8111EE8A03300772F62 /* PastelDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PastelDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E40FA8141EE8A03300772F62 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E40FA8161EE8A03300772F62 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -29,17 +33,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F60BF951FA27EB93FF7E41A /* Pods_PastelDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4268C1D2E246FA1D6262B3EC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				267C6E05FD6B390C60AC91CC /* Pods-PastelDemo.debug.xcconfig */,
+				C390269048C1564EB4A6BACE /* Pods-PastelDemo.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		43B266DA1785F503A5299C0F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4D23FEE7174AA057EE782342 /* Pods_PastelDemo.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		E40FA8081EE8A03300772F62 = {
 			isa = PBXGroup;
 			children = (
 				E40FA8131EE8A03300772F62 /* PastelDemo */,
 				E40FA8121EE8A03300772F62 /* Products */,
+				4268C1D2E246FA1D6262B3EC /* Pods */,
+				43B266DA1785F503A5299C0F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -71,9 +95,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E40FA8231EE8A03300772F62 /* Build configuration list for PBXNativeTarget "PastelDemo" */;
 			buildPhases = (
+				1AC981E2C11CA95C05DAAFE3 /* [CP] Check Pods Manifest.lock */,
 				E40FA80D1EE8A03300772F62 /* Sources */,
 				E40FA80E1EE8A03300772F62 /* Frameworks */,
 				E40FA80F1EE8A03300772F62 /* Resources */,
+				50AF81FF045E269D80F54643 /* [CP] Embed Pods Frameworks */,
+				8DF2C24F1019E3FFA0F9122D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -130,6 +157,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1AC981E2C11CA95C05DAAFE3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		50AF81FF045E269D80F54643 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PastelDemo/Pods-PastelDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8DF2C24F1019E3FFA0F9122D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PastelDemo/Pods-PastelDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		E40FA80D1EE8A03300772F62 /* Sources */ = {
@@ -258,6 +333,7 @@
 		};
 		E40FA8241EE8A03300772F62 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 267C6E05FD6B390C60AC91CC /* Pods-PastelDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = PastelDemo/Info.plist;
@@ -270,6 +346,7 @@
 		};
 		E40FA8251EE8A03300772F62 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C390269048C1564EB4A6BACE /* Pods-PastelDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = PastelDemo/Info.plist;
