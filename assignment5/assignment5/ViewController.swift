@@ -8,11 +8,21 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+    @IBOutlet weak var colorPickerView: UIPickerView!
+    @IBOutlet weak var strokeWidthPickerView: UIPickerView!
+    
+    let colors = ["Black", "Red"]
+    let strokeWidths = [10, 20]
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        colorPickerView.dataSource = self
+        colorPickerView.delegate = self
+        
+        strokeWidthPickerView.dataSource = self
+        strokeWidthPickerView.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -20,6 +30,41 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        if (pickerView == colorPickerView) {
+            return 1
+        }
+        else if (pickerView == strokeWidthPickerView) {
+            return 1
+        }
+        else {
+            return 1
+        }
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        if (pickerView == colorPickerView) {
+            return colors.count
+        }
+        else if (pickerView == strokeWidthPickerView) {
+            return strokeWidths.count
+        }
+        else {
+            return 0
+        }
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        print("\(pickerView == colorPickerView), \(row), \(component)")
+        if (pickerView == colorPickerView) {
+            return colors[row]
+        }
+        else if (pickerView == strokeWidthPickerView) {
+            return "\(strokeWidths[row])"
+        }
+        else {
+            return nil
+        }
+    }
 }
 

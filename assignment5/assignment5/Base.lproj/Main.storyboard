@@ -21,10 +21,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hxi-7n-GBc" customClass="CanvasView" customModule="assignment5" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hxi-7n-GBc" customClass="CanvasView" customModule="assignment5" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="563"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TwJ-lb-AvO">
+                                <rect key="frame" x="0.0" y="571" width="228" height="96"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            </pickerView>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qjl-aY-WMD">
+                                <rect key="frame" x="236" y="571" width="139" height="96"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -34,6 +42,10 @@
                             <constraint firstAttribute="trailing" secondItem="Hxi-7n-GBc" secondAttribute="trailing" id="piN-3A-jvj"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="colorPickerView" destination="TwJ-lb-AvO" id="HCD-bc-jFS"/>
+                        <outlet property="strokeWidthPickerView" destination="qjl-aY-WMD" id="W7w-Ap-oi3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
