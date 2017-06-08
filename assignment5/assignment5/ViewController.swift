@@ -61,7 +61,6 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        print("\(pickerView == colorPickerView), \(row), \(component)")
         if (pickerView == colorPickerView) {
             return colors[row][0] as? String
         }

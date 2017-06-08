@@ -36,7 +36,6 @@ class CanvasView: UIView {
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        print("end")
         strokes.append(currentStroke)
     }
 
@@ -46,7 +45,6 @@ class CanvasView: UIView {
         }
         
         if let context = UIGraphicsGetCurrentContext() {
-            print("strokes: \(strokes.count)")
             for stroke in strokes {
                 stroke.draw(on: context)
             }
