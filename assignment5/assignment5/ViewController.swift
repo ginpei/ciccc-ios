@@ -66,5 +66,14 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             return nil
         }
     }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if (pickerView == colorPickerView) {
+            print("color: \(colors[row])")
+        }
+        else if (pickerView == strokeWidthPickerView) {
+            print("stroke width: \(strokeWidths[row])")
+        }
+    }
 }
 
