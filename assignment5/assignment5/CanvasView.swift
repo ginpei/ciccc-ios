@@ -9,7 +9,7 @@
 import UIKit
 
 class CanvasView: UIView {
-    var points = [CGPoint]()  // TODO rename to points
+    var points = [CGPoint]()
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first {
