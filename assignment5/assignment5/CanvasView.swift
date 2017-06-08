@@ -9,54 +9,76 @@
 import UIKit
 
 class CanvasView: UIView {
-    var lines = [[CGPoint]]()
-    var points = [CGPoint]()
+    var color = UIColor.black.cgColor
+    var strokeWidth = 10
+    var lines = [Line]()
+    var currentLine:Line!
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        currentLine = Line(color: color)
+    }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first {
-            points.append(touch.location(in: self))
+            let point = touch.location(in: self)
+            currentLine = Line(color: color)
+            currentLine.appendPoint(point)
         }
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first {
-            points.append(touch.location(in: self))
+            currentLine.appendPoint(touch.location(in: self))
             setNeedsDisplay()  // to invoke draw(_)
         }
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         print("end")
-        lines.append(points)
-        points = []
+        lines.append(currentLine)
     }
 
     override func draw(_ rect: CGRect) {
-        if (lines.count < 1 && points.count < 1) {
+        if (lines.count < 1 && currentLine.points.count < 1) {
             return
         }
         
         if let context = UIGraphicsGetCurrentContext() {
             print("lines: \(lines.count)")
             for line in lines {
-                print("points in a line: \(line.count)")
-                drawLine(line, on: context)
+                line.draw(on: context)
             }
             
-            drawLine(points, on: context)
+            currentLine.draw(on: context)
         }
     }
     
-    func drawLine(_ points: [CGPoint], on context: CGContext) {
-        context.beginPath()
+    class Line {
+        let color:CGColor
+        var points:[CGPoint] = []
         
-        context.move(to: points[0])
-        for point in points {
-            context.addLine(to: point)
-            context.move(to: point)
+        init(color: CGColor) {
+            self.color = color
         }
         
-        context.setStrokeColor(red: 0, green: 0, blue: 0, alpha: 1)
-        context.strokePath()
+        func appendPoint(_ point: CGPoint) {
+            points.append(point)
+        }
+        
+        
+        func draw(on context: CGContext) {
+            context.beginPath()
+            
+            context.move(to: points[0])
+            for point in points {
+                context.addLine(to: point)
+                context.move(to: point)
+            }
+            
+            context.setStrokeColor(color)
+            context.strokePath()
+        }
     }
 }

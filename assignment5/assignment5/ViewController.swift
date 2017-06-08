@@ -9,10 +9,14 @@
 import UIKit
 
 class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+    @IBOutlet weak var canvasView: CanvasView!
     @IBOutlet weak var colorPickerView: UIPickerView!
     @IBOutlet weak var strokeWidthPickerView: UIPickerView!
     
-    let colors = ["Black", "Red"]
+    let colors = [
+        ["Black", UIColor.black.cgColor],
+        ["Red", UIColor.red.cgColor],
+    ]
     let strokeWidths = [10, 20]
 
     override func viewDidLoad() {
@@ -20,9 +24,11 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         
         colorPickerView.dataSource = self
         colorPickerView.delegate = self
+        pickerView(colorPickerView, didSelectRow: 0, inComponent: 0)
         
         strokeWidthPickerView.dataSource = self
         strokeWidthPickerView.delegate = self
+        pickerView(strokeWidthPickerView, didSelectRow: 0, inComponent: 0)
     }
 
     override func didReceiveMemoryWarning() {
@@ -57,7 +63,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         print("\(pickerView == colorPickerView), \(row), \(component)")
         if (pickerView == colorPickerView) {
-            return colors[row]
+            return colors[row][0] as? String
         }
         else if (pickerView == strokeWidthPickerView) {
             return "\(strokeWidths[row])"
@@ -69,10 +75,10 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if (pickerView == colorPickerView) {
-            print("color: \(colors[row])")
+            canvasView.color = colors[row][1] as! CGColor
         }
         else if (pickerView == strokeWidthPickerView) {
-            print("stroke width: \(strokeWidths[row])")
+            canvasView.strokeWidth = strokeWidths[row]
         }
     }
 }

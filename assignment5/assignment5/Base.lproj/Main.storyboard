@@ -43,6 +43,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="canvasView" destination="Hxi-7n-GBc" id="0Ew-8a-9gW"/>
                         <outlet property="colorPickerView" destination="TwJ-lb-AvO" id="HCD-bc-jFS"/>
                         <outlet property="strokeWidthPickerView" destination="qjl-aY-WMD" id="W7w-Ap-oi3"/>
                     </connections>
