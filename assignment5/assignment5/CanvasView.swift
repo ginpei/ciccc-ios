@@ -11,51 +11,51 @@ import UIKit
 class CanvasView: UIView {
     var color = UIColor.black.cgColor
     var strokeWidth = 10
-    var lines = [Line]()
-    var currentLine:Line!
+    var strokes = [Stroke]()
+    var currentStroke:Stroke!
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
-        currentLine = Line(color: color)
+        currentStroke = Stroke(color: color)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first {
             let point = touch.location(in: self)
-            currentLine = Line(color: color)
-            currentLine.appendPoint(point)
+            currentStroke = Stroke(color: color)
+            currentStroke.appendPoint(point)
         }
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first {
-            currentLine.appendPoint(touch.location(in: self))
+            currentStroke.appendPoint(touch.location(in: self))
             setNeedsDisplay()  // to invoke draw(_)
         }
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         print("end")
-        lines.append(currentLine)
+        strokes.append(currentStroke)
     }
 
     override func draw(_ rect: CGRect) {
-        if (lines.count < 1 && currentLine.points.count < 1) {
+        if (strokes.count < 1 && currentStroke.points.count < 1) {
             return
         }
         
         if let context = UIGraphicsGetCurrentContext() {
-            print("lines: \(lines.count)")
-            for line in lines {
-                line.draw(on: context)
+            print("strokes: \(strokes.count)")
+            for stroke in strokes {
+                stroke.draw(on: context)
             }
             
-            currentLine.draw(on: context)
+            currentStroke.draw(on: context)
         }
     }
     
-    class Line {
+    class Stroke {
         let color:CGColor
         var points:[CGPoint] = []
         
