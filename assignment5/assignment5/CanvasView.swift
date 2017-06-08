@@ -40,14 +40,14 @@ class CanvasView: UIView {
             print("lines: \(lines.count)")
             for line in lines {
                 print("points in a line: \(line.count)")
-                draw(line: line, on: context)
+                drawLine(line, on: context)
             }
             
-            draw(line: points, on: context)
+            drawLine(points, on: context)
         }
     }
     
-    func draw(line points: [CGPoint], on context: CGContext) {
+    func drawLine(_ points: [CGPoint], on context: CGContext) {
         context.beginPath()
         
         context.move(to: points[0])
