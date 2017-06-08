@@ -12,6 +12,7 @@
 		E4568ABD1EE9E89800F2E6EC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4568ABB1EE9E89800F2E6EC /* Main.storyboard */; };
 		E4568ABF1EE9E89800F2E6EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E4568ABE1EE9E89800F2E6EC /* Assets.xcassets */; };
 		E4568AC21EE9E89800F2E6EC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4568AC01EE9E89800F2E6EC /* LaunchScreen.storyboard */; };
+		E4568ACA1EE9F91800F2E6EC /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4568AC91EE9F91800F2E6EC /* CanvasView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		E4568ABE1EE9E89800F2E6EC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E4568AC11EE9E89800F2E6EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E4568AC31EE9E89800F2E6EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E4568AC91EE9F91800F2E6EC /* CanvasView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 			children = (
 				E4568AB71EE9E89800F2E6EC /* AppDelegate.swift */,
 				E4568AB91EE9E89800F2E6EC /* ViewController.swift */,
+				E4568AC91EE9F91800F2E6EC /* CanvasView.swift */,
 				E4568ABB1EE9E89800F2E6EC /* Main.storyboard */,
 				E4568ABE1EE9E89800F2E6EC /* Assets.xcassets */,
 				E4568AC01EE9E89800F2E6EC /* LaunchScreen.storyboard */,
@@ -138,6 +141,7 @@
 			files = (
 				E4568ABA1EE9E89800F2E6EC /* ViewController.swift in Sources */,
 				E4568AB81EE9E89800F2E6EC /* AppDelegate.swift in Sources */,
+				E4568ACA1EE9F91800F2E6EC /* CanvasView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
