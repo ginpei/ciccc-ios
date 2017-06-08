@@ -30,16 +30,20 @@ class CanvasView: UIView {
         }
         
         if let context = UIGraphicsGetCurrentContext() {
-            context.beginPath()
-            
-            context.move(to: points[0])
-            for point in points {
-                context.addLine(to: point)
-                context.move(to: point)
-            }
-            
-            context.setStrokeColor(red: 0, green: 0, blue: 0, alpha: 1)
-            context.strokePath()
+            draw(line: points, on: context)
         }
+    }
+    
+    func draw(line: [CGPoint], on context: CGContext) {
+        context.beginPath()
+        
+        context.move(to: points[0])
+        for point in points {
+            context.addLine(to: point)
+            context.move(to: point)
+        }
+        
+        context.setStrokeColor(red: 0, green: 0, blue: 0, alpha: 1)
+        context.strokePath()
     }
 }
