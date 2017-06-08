@@ -9,11 +9,12 @@
 import UIKit
 
 class CanvasView: UIView {
+    var lines = [[CGPoint]]()
     var points = [CGPoint]()
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first {
-            self.points = [touch.location(in: self)]
+            points.append(touch.location(in: self))
         }
     }
     
@@ -23,18 +24,30 @@ class CanvasView: UIView {
             setNeedsDisplay()  // to invoke draw(_)
         }
     }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        print("end")
+        lines.append(points)
+        points = []
+    }
 
     override func draw(_ rect: CGRect) {
-        if (points.count < 1) {
+        if (lines.count < 1 && points.count < 1) {
             return
         }
         
         if let context = UIGraphicsGetCurrentContext() {
+            print("lines: \(lines.count)")
+            for line in lines {
+                print("points in a line: \(line.count)")
+                draw(line: line, on: context)
+            }
+            
             draw(line: points, on: context)
         }
     }
     
-    func draw(line: [CGPoint], on context: CGContext) {
+    func draw(line points: [CGPoint], on context: CGContext) {
         context.beginPath()
         
         context.move(to: points[0])
