@@ -182,20 +182,18 @@ class CanvasView: UIView, UITextFieldDelegate {
     class Text: Content {
         let string: String
         let frame: CGRect
-        let attr: [String: Any]
         
         init(_ string: String, at frame: CGRect, color: CGColor, size: Double) {
             self.string = string
             self.frame = frame
-            self.attr = [
-                "NSForegroundColorAttributeName": UIColor(cgColor: color),
-                "NSFontAttributeName": UIFont.systemFont(ofSize: CGFloat(size)),
-            ]
-            
             super.init(color: color, size: size)
         }
         
         override func draw(on context: CGContext) {
+            let attr = [
+                "NSForegroundColorAttributeName": UIColor(cgColor: color),
+                "NSFontAttributeName": UIFont.systemFont(ofSize: CGFloat(strokeWidth)),
+                ]
             string.draw(in: frame, withAttributes: attr)
         }
     }
