@@ -128,7 +128,7 @@ class CanvasView: UIView, UITextFieldDelegate {
     
     class Content {
         let color:CGColor
-        var size:Double
+        let size:Double
         
         init(color: CGColor, size: Double) {
             self.color = color
