@@ -108,7 +108,6 @@ class CanvasView: UIView, UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         if let string = textField.text, let text = editingText {
-            print(string)
             text.string = string
             contents.append(text)
             setNeedsDisplay()  // to invoke draw(_)
