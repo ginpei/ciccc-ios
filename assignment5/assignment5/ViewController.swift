@@ -18,9 +18,11 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         
         colorPickerView.dataSource = self
         colorPickerView.delegate = self
+        colorPickerView.selectRow(CanvasView.firstColorIndex, inComponent: 0, animated: false)
         
         strokeWidthPickerView.dataSource = self
         strokeWidthPickerView.delegate = self
+        strokeWidthPickerView.selectRow(CanvasView.firstStrokeWidthIndex, inComponent: 0, animated: false)
     }
 
     override func didReceiveMemoryWarning() {
