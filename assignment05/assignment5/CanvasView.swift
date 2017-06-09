@@ -85,7 +85,7 @@ class CanvasView: UIView, UITextFieldDelegate {
     func ontap(sender: UITapGestureRecognizer) {
         let point = sender.location(in: self)
         currentTextField = createTextField(at: point)
-        addSubview(currentTextField?)
+        addSubview(currentTextField!)
         currentTextField?.becomeFirstResponder()
     }
     
