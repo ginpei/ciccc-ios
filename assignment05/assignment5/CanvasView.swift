@@ -11,19 +11,19 @@ import UIKit
 class CanvasView: UIView {
     static let firstColorIndex = 0
     static let colors = [
-        ["Black", UIColor.black.cgColor],
-        ["White (Eraser)", UIColor.white.cgColor],
-        ["Red", UIColor.red.cgColor],
-        ["Green", UIColor.green.cgColor],
-        ["Blue", UIColor.blue.cgColor],
-        ["Yellow", UIColor.yellow.cgColor],
-        ["Orange", UIColor.orange.cgColor],
-        ["Purple", UIColor.purple.cgColor],
+        Color.black,
+        Color.white,
+        Color.red,
+        Color.green,
+        Color.blue,
+        Color.yellow,
+        Color.orange,
+        Color.purple,
     ]
     static let firstStrokeWidthIndex = 4
     static let strokeWidths = [1.0, 3.0, 5.0, 7.0, 10.0, 15.0, 20.0]
     
-    var color = CanvasView.colors[CanvasView.firstColorIndex][1] as! CGColor
+    var color = CanvasView.colors[CanvasView.firstColorIndex].cgColor
     var strokeWidth = CanvasView.strokeWidths[CanvasView.firstStrokeWidthIndex]
     var strokes = [Stroke]()
     var currentStroke:Stroke!
@@ -69,6 +69,25 @@ class CanvasView: UIView {
             }
             
             currentStroke.draw(on: context)
+        }
+    }
+    
+    struct Color {
+        static let black = Color(name: "Black", cgColor: UIColor.black.cgColor)
+        static let white = Color(name: "White (Eraser)", cgColor: UIColor.white.cgColor)
+        static let red = Color(name: "Red", cgColor: UIColor.red.cgColor)
+        static let green = Color(name: "Green", cgColor: UIColor.green.cgColor)
+        static let blue = Color(name: "Blue", cgColor: UIColor.blue.cgColor)
+        static let yellow = Color(name: "Yellow", cgColor: UIColor.yellow.cgColor)
+        static let orange = Color(name: "Orange", cgColor: UIColor.orange.cgColor)
+        static let purple = Color(name: "Purple", cgColor: UIColor.purple.cgColor)
+        
+        let name: String
+        let cgColor: CGColor
+        
+        init(name: String, cgColor: CGColor) {
+            self.name = name
+            self.cgColor = cgColor
         }
     }
     

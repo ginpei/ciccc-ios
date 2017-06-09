@@ -56,7 +56,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if (pickerView == colorPickerView) {
-            return CanvasView.colors[row][0] as? String
+            return CanvasView.colors[row].name
         }
         else if (pickerView == strokeWidthPickerView) {
             return "\(CanvasView.strokeWidths[row])"
@@ -68,7 +68,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if (pickerView == colorPickerView) {
-            canvasView.color = CanvasView.colors[row][1] as! CGColor
+            canvasView.color = CanvasView.colors[row].cgColor
         }
         else if (pickerView == strokeWidthPickerView) {
             canvasView.strokeWidth = CanvasView.strokeWidths[row]
