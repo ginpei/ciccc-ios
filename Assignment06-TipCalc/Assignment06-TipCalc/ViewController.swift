@@ -36,6 +36,9 @@ class ViewController: UIViewController {
         billAmountTextField.text = String(tipCalculation.billAmount)
         tipInPercentageTextField.text = String(tipCalculation.tipInPercentage)
         tipInDollarsTextField.text = String(tipCalculation.tipInDollars)
+        
+        tipInPercentageSlider.value = Float(tipCalculation.tipInPercentage)
+        
         calculationLabel.text = "$ \(tipCalculation.billAmount) + $\(tipCalculation.tipInDollars)"
         resultLabel.text = "$ \(tipCalculation.billAmount + tipCalculation.tipInDollars)"
     }
@@ -60,7 +63,8 @@ class ViewController: UIViewController {
     }
     
     @IBAction func tipInPercentageSlider_valueChanged(_ sender: Any) {
-        print("tip in % slider")
+        tipCalculation.tipInPercentage = Int(tipInPercentageSlider.value)
+        updateCalculation()
     }
     
     @IBAction func tipInDollarsTextField_editingDidEnd(_ sender: Any) {
