@@ -17,7 +17,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         ["Black", UIColor.black.cgColor],
         ["Red", UIColor.red.cgColor],
     ]
-    let strokeWidths = [10, 20]
+    let strokeWidths = [1.0, 2.0, 3.0, 5.0, 7.0, 10.0, 15.0, 20.0]
 
     override func viewDidLoad() {
         super.viewDidLoad()

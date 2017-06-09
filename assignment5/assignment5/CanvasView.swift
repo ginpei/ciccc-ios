@@ -10,20 +10,20 @@ import UIKit
 
 class CanvasView: UIView {
     var color = UIColor.black.cgColor
-    var strokeWidth = 10
+    var strokeWidth = 1.0
     var strokes = [Stroke]()
     var currentStroke:Stroke!
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
-        currentStroke = Stroke(color: color)
+        currentStroke = Stroke(color: color, width: strokeWidth)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first {
             let point = touch.location(in: self)
-            currentStroke = Stroke(color: color)
+            currentStroke = Stroke(color: color, width: strokeWidth)
             currentStroke.appendPoint(point)
         }
     }
@@ -55,10 +55,12 @@ class CanvasView: UIView {
     
     class Stroke {
         let color:CGColor
+        var strokeWidth:Double
         var points:[CGPoint] = []
         
-        init(color: CGColor) {
+        init(color: CGColor, width: Double) {
             self.color = color
+            strokeWidth = width
         }
         
         func appendPoint(_ point: CGPoint) {
@@ -76,6 +78,7 @@ class CanvasView: UIView {
             }
             
             context.setStrokeColor(color)
+            context.setLineWidth(CGFloat(strokeWidth))
             context.strokePath()
         }
     }
