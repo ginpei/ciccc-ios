@@ -18,6 +18,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var tipInPercentageForDallarsLabel: UILabel!
     @IBOutlet weak var calculationLabel: UILabel!
     @IBOutlet weak var resultLabel: UILabel!
+    
+    let tipCalculation = TipCalculation(billAmount: 0.0)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,19 +30,29 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func updateCalculation() {
+        calculationLabel.text = "$ \(tipCalculation.billAmount) + $\(tipCalculation.tipInDollars)"
+        resultLabel.text = "$ \(tipCalculation.billAmount + tipCalculation.tipInDollars)"
+    }
 
     @IBAction func billAmountTextField_editingDidEnd(_ sender: Any) {
-        print("bill amount")
+        tipCalculation.billAmount = Double(billAmountTextField.text!)!
+        updateCalculation()
     }
 
     @IBAction func toggleTipInPercentage_valueChanged(_ sender: Any) {
         let turnedOn = (sender as! UISwitch).isOn
+        
+        tipCalculation.payInPercentage = turnedOn
+        
         tipInPercentageView.isHidden = !turnedOn
         tipInDollarsView.isHidden = turnedOn
     }
     
     @IBAction func tipInPercentageTextField_editingDidEnd(_ sender: Any) {
-        print("tip in %")
+        tipCalculation.tipInPercentage = Int(tipInPercentageTextField.text!)!
+        updateCalculation()
     }
     
     @IBAction func tipInPercentageSlider_valueChanged(_ sender: Any) {
@@ -48,7 +60,8 @@ class ViewController: UIViewController {
     }
     
     @IBAction func tipInDollarsTextField_editingDidEnd(_ sender: Any) {
-        print("tip in $")
+        tipCalculation.tipInDollars = Double(tipInDollarsTextField.text!)!
+        updateCalculation()
     }
     
     @IBAction func set10percent_touchUpInside(_ sender: Any) {

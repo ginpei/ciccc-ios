@@ -12,6 +12,7 @@
 		E443D7301EEB4C690071FD73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E443D72E1EEB4C690071FD73 /* Main.storyboard */; };
 		E443D7321EEB4C690071FD73 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E443D7311EEB4C690071FD73 /* Assets.xcassets */; };
 		E443D7351EEB4C690071FD73 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E443D7331EEB4C690071FD73 /* LaunchScreen.storyboard */; };
+		E443D73D1EEB64B50071FD73 /* TipCalculation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E443D73C1EEB64B50071FD73 /* TipCalculation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		E443D7311EEB4C690071FD73 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E443D7341EEB4C690071FD73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E443D7361EEB4C690071FD73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E443D73C1EEB64B50071FD73 /* TipCalculation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipCalculation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 			children = (
 				E443D72A1EEB4C690071FD73 /* AppDelegate.swift */,
 				E443D72C1EEB4C690071FD73 /* ViewController.swift */,
+				E443D73C1EEB64B50071FD73 /* TipCalculation.swift */,
 				E443D72E1EEB4C690071FD73 /* Main.storyboard */,
 				E443D7311EEB4C690071FD73 /* Assets.xcassets */,
 				E443D7331EEB4C690071FD73 /* LaunchScreen.storyboard */,
@@ -138,6 +141,7 @@
 			files = (
 				E443D72D1EEB4C690071FD73 /* ViewController.swift in Sources */,
 				E443D72B1EEB4C690071FD73 /* AppDelegate.swift in Sources */,
+				E443D73D1EEB64B50071FD73 /* TipCalculation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
