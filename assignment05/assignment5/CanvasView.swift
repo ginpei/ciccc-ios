@@ -26,7 +26,7 @@ class CanvasView: UIView, UITextFieldDelegate {
     var color = CanvasView.colors[CanvasView.firstColorIndex].cgColor
     var strokeWidth = CanvasView.strokeWidths[CanvasView.firstStrokeWidthIndex]
     var contents = [Content]()
-    var currentStroke:Stroke!
+    var currentStroke: Stroke!
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
