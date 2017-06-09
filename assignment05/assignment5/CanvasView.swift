@@ -128,11 +128,11 @@ class CanvasView: UIView, UITextFieldDelegate {
     
     class Content {
         let color:CGColor
-        var strokeWidth:Double
+        var size:Double
         
         init(color: CGColor, size: Double) {
             self.color = color
-            strokeWidth = size
+            self.size = size
         }
 
         func draw(on context: CGContext) {
@@ -164,7 +164,7 @@ class CanvasView: UIView, UITextFieldDelegate {
                 let distance = Double(abs(point.x - last.x) + abs(point.y - last.y))
                 let longDistance = distance + distances.reduce(0, +)
                 let speedRate = max(0.5, min(1, longDistance / maxDistance))
-                let width = strokeWidth * speedRate
+                let width = size * speedRate
                 
                 context.addLine(to: point)
                 context.setLineWidth(CGFloat(width))
@@ -192,7 +192,7 @@ class CanvasView: UIView, UITextFieldDelegate {
         override func draw(on context: CGContext) {
             let attr = [
                 "NSForegroundColorAttributeName": UIColor(cgColor: color),
-                "NSFontAttributeName": UIFont.systemFont(ofSize: CGFloat(strokeWidth)),
+                "NSFontAttributeName": UIFont.systemFont(ofSize: CGFloat(size)),
                 ]
             string.draw(in: frame, withAttributes: attr)
         }
