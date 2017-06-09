@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CanvasView: UIView {
+class CanvasView: UIView, UITextFieldDelegate {
     static let firstColorIndex = 0
     static let colors = [
         Color.black,
@@ -32,6 +32,10 @@ class CanvasView: UIView {
         super.init(coder: aDecoder)
         
         currentStroke = Stroke(color: color, width: strokeWidth)
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ontap))
+        tapGestureRecognizer.numberOfTapsRequired = 2
+        addGestureRecognizer(tapGestureRecognizer)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -70,6 +74,35 @@ class CanvasView: UIView {
             
             currentStroke.draw(on: context)
         }
+    }
+    
+    func ontap(sender: UITapGestureRecognizer) {
+        let point = sender.location(in: self)
+        let textField = createTextField(at: point)
+        addSubview(textField)
+        textField.becomeFirstResponder()
+    }
+    
+    func createTextField(at point: CGPoint) -> UITextField {
+        let height = strokeWidth * 3
+        let rect = CGRect(x: Double(point.x) - height / 2, y: Double(point.y) - height / 2, width: height * 10, height: height)
+        let textField = UITextField(frame: rect)
+        
+        textField.textColor = UIColor(cgColor: color)
+        textField.minimumFontSize = CGFloat(strokeWidth)
+        textField.borderStyle = UITextBorderStyle.roundedRect
+        
+        textField.delegate = self
+        
+        return textField
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if let text = textField.text {
+            print(text)
+        }
+        
+        textField.removeFromSuperview()
     }
     
     struct Color {
