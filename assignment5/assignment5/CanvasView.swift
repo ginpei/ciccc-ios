@@ -78,6 +78,8 @@ class CanvasView: UIView {
             
             context.setStrokeColor(color)
             context.setLineWidth(CGFloat(strokeWidth))
+            context.setLineCap(CGLineCap.round)
+            context.setLineJoin(CGLineJoin.round)
             context.strokePath()
         }
     }
