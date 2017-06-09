@@ -28,7 +28,12 @@ class TipCalculation {
             }
         }
         set(value) {
-            _tipInPercentage = value
+            if payInPercentage {
+                _tipInPercentage = value
+            }
+            else {
+                _tipInDollars = billAmount * Double(value) / 100
+            }
         }
     }
     
@@ -42,7 +47,12 @@ class TipCalculation {
             }
         }
         set(value) {
-            _tipInDollars = value
+            if !payInPercentage {
+                _tipInDollars = value
+            }
+            else {
+                _tipInPercentage = Int(100 * value / billAmount)
+            }
         }
     }
 }
