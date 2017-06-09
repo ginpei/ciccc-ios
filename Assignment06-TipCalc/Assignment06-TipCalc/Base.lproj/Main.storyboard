@@ -41,6 +41,9 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                <connections>
+                                    <action selector="billAmountTextField_editingDidEnd:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="9X3-r2-BIL"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tip" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lok-uR-ate">
                                 <rect key="frame" x="16" y="95" width="343" height="21"/>
@@ -73,6 +76,9 @@
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                        <connections>
+                                            <action selector="tipInPercentageTextField_editingDidEnd:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="Gqs-a7-4zP"/>
+                                        </connections>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A5e-oB-xqU">
                                         <rect key="frame" x="323" y="13" width="20" height="21"/>
@@ -85,20 +91,32 @@
                                         <rect key="frame" x="256" y="46" width="79" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="20%"/>
+                                        <connections>
+                                            <action selector="set20percent_touchUpInside:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eqs-3f-GrV"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3na-wC-cjv">
                                         <rect key="frame" x="0.0" y="46" width="79" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="10%"/>
+                                        <connections>
+                                            <action selector="set10percent_touchUpInside:" destination="BYZ-38-t0r" eventType="touchUpInside" id="O2b-Qj-GDj"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ynZ-cP-ejW">
                                         <rect key="frame" x="132" y="46" width="79" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="15%"/>
+                                        <connections>
+                                            <action selector="set15percent_touchUpInside:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tfC-mx-T0z"/>
+                                        </connections>
                                     </button>
                                     <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="f2c-MG-EPc">
                                         <rect key="frame" x="-2" y="84" width="347" height="31"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <connections>
+                                            <action selector="tipInPercentageSlider_valueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="xCt-wk-zRK"/>
+                                        </connections>
                                     </slider>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -118,16 +136,25 @@
                                         <rect key="frame" x="264" y="46" width="79" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="20%"/>
+                                        <connections>
+                                            <action selector="set20percent_touchUpInside:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0gt-FR-UuO"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0iX-Fz-A5u">
                                         <rect key="frame" x="0.0" y="46" width="79" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="10%"/>
+                                        <connections>
+                                            <action selector="set10percent_touchUpInside:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FZx-y8-Els"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vzK-g4-adD">
                                         <rect key="frame" x="132" y="46" width="79" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="15%"/>
+                                        <connections>
+                                            <action selector="set15percent_touchUpInside:" destination="BYZ-38-t0r" eventType="touchUpInside" id="V7P-c7-5h7"/>
+                                        </connections>
                                     </button>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3Go-Wu-Lru">
                                         <rect key="frame" x="28" y="8" width="315" height="30"/>
@@ -135,6 +162,9 @@
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                        <connections>
+                                            <action selector="tipInDollarsTextField_editingDidEnd:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="kf7-Q1-bPy"/>
+                                        </connections>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="(0 %)" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HsB-yt-1pT">
                                         <rect key="frame" x="8" y="84" width="335" height="21"/>
@@ -171,7 +201,14 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <connections>
+                        <outlet property="billAmountTextField" destination="7Rf-Y7-EnT" id="bxe-AM-XIm"/>
+                        <outlet property="calculationLabel" destination="cKf-Ku-FDh" id="Vhf-57-ehe"/>
+                        <outlet property="resultLabel" destination="Tqc-tJ-QPr" id="NKd-O7-joq"/>
+                        <outlet property="tipInDollarsTextField" destination="3Go-Wu-Lru" id="kHj-CO-f1R"/>
                         <outlet property="tipInDollarsView" destination="dgT-Hd-j2K" id="MAG-Io-jmu"/>
+                        <outlet property="tipInPercentageForDallarsLabel" destination="HsB-yt-1pT" id="E3v-uU-cIO"/>
+                        <outlet property="tipInPercentageSlider" destination="f2c-MG-EPc" id="yeX-EA-MHF"/>
+                        <outlet property="tipInPercentageTextField" destination="wa4-de-KSN" id="2YB-nB-2BQ"/>
                         <outlet property="tipInPercentageView" destination="QCN-xV-nTI" id="wSD-O5-paD"/>
                     </connections>
                 </viewController>
