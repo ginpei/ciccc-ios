@@ -87,14 +87,6 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3mk-Nh-r2V">
-                                        <rect key="frame" x="256" y="46" width="79" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="20%"/>
-                                        <connections>
-                                            <action selector="set20percent_touchUpInside:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eqs-3f-GrV"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3na-wC-cjv">
                                         <rect key="frame" x="0.0" y="46" width="79" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -109,6 +101,14 @@
                                         <state key="normal" title="15%"/>
                                         <connections>
                                             <action selector="set15percent_touchUpInside:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tfC-mx-T0z"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3mk-Nh-r2V">
+                                        <rect key="frame" x="256" y="46" width="79" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="20%"/>
+                                        <connections>
+                                            <action selector="set20percent_touchUpInside:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eqs-3f-GrV"/>
                                         </connections>
                                     </button>
                                     <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="f2c-MG-EPc">
@@ -132,14 +132,16 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yQy-EU-PUI">
-                                        <rect key="frame" x="264" y="46" width="79" height="30"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3Go-Wu-Lru">
+                                        <rect key="frame" x="28" y="8" width="315" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="20%"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                         <connections>
-                                            <action selector="set20percent_touchUpInside:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0gt-FR-UuO"/>
+                                            <action selector="tipInDollarsTextField_editingDidEnd:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="kf7-Q1-bPy"/>
                                         </connections>
-                                    </button>
+                                    </textField>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0iX-Fz-A5u">
                                         <rect key="frame" x="0.0" y="46" width="79" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -156,16 +158,14 @@
                                             <action selector="set15percent_touchUpInside:" destination="BYZ-38-t0r" eventType="touchUpInside" id="V7P-c7-5h7"/>
                                         </connections>
                                     </button>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3Go-Wu-Lru">
-                                        <rect key="frame" x="28" y="8" width="315" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yQy-EU-PUI">
+                                        <rect key="frame" x="264" y="46" width="79" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                        <state key="normal" title="20%"/>
                                         <connections>
-                                            <action selector="tipInDollarsTextField_editingDidEnd:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="kf7-Q1-bPy"/>
+                                            <action selector="set20percent_touchUpInside:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0gt-FR-UuO"/>
                                         </connections>
-                                    </textField>
+                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="(0 %)" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HsB-yt-1pT">
                                         <rect key="frame" x="8" y="84" width="335" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
