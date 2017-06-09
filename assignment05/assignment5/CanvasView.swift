@@ -25,14 +25,13 @@ class CanvasView: UIView, UITextFieldDelegate {
     
     var color = CanvasView.colors[CanvasView.firstColorIndex].cgColor
     var strokeWidth = CanvasView.strokeWidths[CanvasView.firstStrokeWidthIndex]
-    var strokes = [Stroke]()
-    var texts = [Text]()
+    var contents = [Content]()
     var currentStroke:Stroke!
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
-        currentStroke = Stroke(color: color, width: strokeWidth)
+        currentStroke = Stroke(color: color, size: strokeWidth)
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ontap))
         tapGestureRecognizer.numberOfTapsRequired = 2
@@ -42,7 +41,7 @@ class CanvasView: UIView, UITextFieldDelegate {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first {
             let point = touch.location(in: self)
-            currentStroke = Stroke(color: color, width: strokeWidth)
+            currentStroke = Stroke(color: color, size: strokeWidth)
             currentStroke.appendPoint(point)
         }
     }
@@ -60,24 +59,20 @@ class CanvasView: UIView, UITextFieldDelegate {
             setNeedsDisplay()  // to invoke draw(_)
         }
         
-        strokes.append(currentStroke)
+        contents.append(currentStroke)
     }
 
     override func draw(_ rect: CGRect) {
-        if (strokes.count < 1 && currentStroke.points.count < 1) {
+        if (contents.count < 1 && currentStroke.points.count < 1) {
             return
         }
         
         if let context = UIGraphicsGetCurrentContext() {
-            for stroke in strokes {
+            for stroke in contents {
                 stroke.draw(on: context)
             }
             
             currentStroke.draw(on: context)
-        }
-        
-        for text in texts {
-            text.draw()
         }
     }
     
@@ -105,7 +100,7 @@ class CanvasView: UIView, UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         if let text = textField.text {
             print(text)
-            texts.append(Text(text, at: textField.frame, color: color, size: strokeWidth))
+            contents.append(Text(text, at: textField.frame, color: color, size: strokeWidth))
             setNeedsDisplay()  // to invoke draw(_)
         }
         
@@ -131,7 +126,21 @@ class CanvasView: UIView, UITextFieldDelegate {
         }
     }
     
-    class Text {
+    class Content {
+        let color:CGColor
+        var strokeWidth:Double
+        
+        init(color: CGColor, size: Double) {
+            self.color = color
+            strokeWidth = size
+        }
+
+        func draw(on context: CGContext) {
+            // implement me!
+        }
+    }
+    
+    class Text: Content {
         let string: String
         let frame: CGRect
         let attr: [String: Any]
@@ -143,30 +152,25 @@ class CanvasView: UIView, UITextFieldDelegate {
                 "NSForegroundColorAttributeName": UIColor(cgColor: color),
                 "NSFontAttributeName": UIFont.systemFont(ofSize: CGFloat(size)),
             ]
+            
+            super.init(color: color, size: size)
         }
         
-        func draw() {
+        override func draw(on context: CGContext) {
             string.draw(in: frame, withAttributes: attr)
         }
     }
     
-    class Stroke {
+    class Stroke: Content {
         let maxDistance = 300.0
         
-        let color:CGColor
-        var strokeWidth:Double
         var points:[CGPoint] = []
-        
-        init(color: CGColor, width: Double) {
-            self.color = color
-            strokeWidth = width
-        }
         
         func appendPoint(_ point: CGPoint) {
             points.append(point)
         }
         
-        func draw(on context: CGContext) {
+        override func draw(on context: CGContext) {
             context.beginPath()
             
             context.setStrokeColor(color)
