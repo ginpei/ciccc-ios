@@ -27,6 +27,7 @@ class CanvasView: UIView, UITextFieldDelegate {
     var strokeWidth = CanvasView.strokeWidths[CanvasView.firstStrokeWidthIndex]
     var contents = [Content]()
     var currentStroke: Stroke!
+    var currentTextField: UITextField?
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -43,6 +44,11 @@ class CanvasView: UIView, UITextFieldDelegate {
             let point = touch.location(in: self)
             currentStroke = Stroke(color: color, size: strokeWidth)
             currentStroke.appendPoint(point)
+        }
+        
+        if currentTextField != nil {
+            currentTextField!.resignFirstResponder()
+            currentTextField = nil
         }
     }
     
@@ -78,9 +84,9 @@ class CanvasView: UIView, UITextFieldDelegate {
     
     func ontap(sender: UITapGestureRecognizer) {
         let point = sender.location(in: self)
-        let textField = createTextField(at: point)
-        addSubview(textField)
-        textField.becomeFirstResponder()
+        currentTextField = createTextField(at: point)
+        addSubview(currentTextField?)
+        currentTextField?.becomeFirstResponder()
     }
     
     func createTextField(at point: CGPoint) -> UITextField {
