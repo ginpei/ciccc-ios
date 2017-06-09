@@ -12,23 +12,15 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     @IBOutlet weak var canvasView: CanvasView!
     @IBOutlet weak var colorPickerView: UIPickerView!
     @IBOutlet weak var strokeWidthPickerView: UIPickerView!
-    
-    let colors = [
-        ["Black", UIColor.black.cgColor],
-        ["Red", UIColor.red.cgColor],
-    ]
-    let strokeWidths = [1.0, 2.0, 3.0, 5.0, 7.0, 10.0, 15.0, 20.0]
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         colorPickerView.dataSource = self
         colorPickerView.delegate = self
-        pickerView(colorPickerView, didSelectRow: 0, inComponent: 0)
         
         strokeWidthPickerView.dataSource = self
         strokeWidthPickerView.delegate = self
-        pickerView(strokeWidthPickerView, didSelectRow: 0, inComponent: 0)
     }
 
     override func didReceiveMemoryWarning() {
@@ -50,10 +42,10 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if (pickerView == colorPickerView) {
-            return colors.count
+            return CanvasView.colors.count
         }
         else if (pickerView == strokeWidthPickerView) {
-            return strokeWidths.count
+            return CanvasView.strokeWidths.count
         }
         else {
             return 0
@@ -62,10 +54,10 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if (pickerView == colorPickerView) {
-            return colors[row][0] as? String
+            return CanvasView.colors[row][0] as? String
         }
         else if (pickerView == strokeWidthPickerView) {
-            return "\(strokeWidths[row])"
+            return "\(CanvasView.strokeWidths[row])"
         }
         else {
             return nil
@@ -74,10 +66,10 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if (pickerView == colorPickerView) {
-            canvasView.color = colors[row][1] as! CGColor
+            canvasView.color = CanvasView.colors[row][1] as! CGColor
         }
         else if (pickerView == strokeWidthPickerView) {
-            canvasView.strokeWidth = strokeWidths[row]
+            canvasView.strokeWidth = CanvasView.strokeWidths[row]
         }
     }
 }

@@ -9,8 +9,22 @@
 import UIKit
 
 class CanvasView: UIView {
-    var color = UIColor.black.cgColor
-    var strokeWidth = 1.0
+    static let firstColor:[Any] = ["Black", UIColor.black.cgColor]
+    static let colors = [
+        CanvasView.firstColor,
+        ["White (Eraser)", UIColor.white.cgColor],
+        ["Red", UIColor.red.cgColor],
+        ["Green", UIColor.green.cgColor],
+        ["Blue", UIColor.blue.cgColor],
+        ["Yellow", UIColor.yellow.cgColor],
+        ["Orange", UIColor.orange.cgColor],
+        ["Purple", UIColor.purple.cgColor],
+    ]
+    static let firstStrokeWidth = 1.0
+    static let strokeWidths = [CanvasView.firstStrokeWidth, 2.0, 3.0, 5.0, 7.0, 10.0, 15.0, 20.0]
+    
+    var color = CanvasView.firstColor[1] as! CGColor
+    var strokeWidth = CanvasView.firstStrokeWidth
     var strokes = [Stroke]()
     var currentStroke:Stroke!
     
