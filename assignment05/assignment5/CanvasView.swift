@@ -28,6 +28,7 @@ class CanvasView: UIView, UITextFieldDelegate {
     var contents = [Content]()
     var currentStroke: Stroke!
     var currentTextField: UITextField?
+    var editingText: Text?
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -100,13 +101,16 @@ class CanvasView: UIView, UITextFieldDelegate {
         
         textField.delegate = self
         
+        editingText = Text(frame: rect, color: color, size: strokeWidth)
+        
         return textField
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        if let text = textField.text {
-            print(text)
-            contents.append(Text(text, at: textField.frame, color: color, size: strokeWidth))
+        if let string = textField.text, let text = editingText {
+            print(string)
+            text.string = string
+            contents.append(text)
             setNeedsDisplay()  // to invoke draw(_)
         }
         
@@ -186,11 +190,10 @@ class CanvasView: UIView, UITextFieldDelegate {
     }
     
     class Text: Content {
-        let string: String
+        var string: String = ""
         let frame: CGRect
         
-        init(_ string: String, at frame: CGRect, color: CGColor, size: Double) {
-            self.string = string
+        init(frame: CGRect, color: CGColor, size: Double) {
             self.frame = frame
             super.init(color: color, size: size)
         }
