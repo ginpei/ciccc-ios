@@ -67,7 +67,6 @@ class CanvasView: UIView {
             points.append(point)
         }
         
-        
         func draw(on context: CGContext) {
             context.beginPath()
             
