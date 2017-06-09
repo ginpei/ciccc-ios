@@ -197,8 +197,8 @@ class CanvasView: UIView, UITextFieldDelegate {
         
         override func draw(on context: CGContext) {
             let attr = [
-                "NSForegroundColorAttributeName": UIColor(cgColor: color),
-                "NSFontAttributeName": UIFont.systemFont(ofSize: CGFloat(size)),
+                NSForegroundColorAttributeName: UIColor(cgColor: color),
+                NSFontAttributeName: UIFont.systemFont(ofSize: CGFloat(size)),
                 ]
             string.draw(in: frame, withAttributes: attr)
         }
