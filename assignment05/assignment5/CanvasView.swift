@@ -26,6 +26,7 @@ class CanvasView: UIView, UITextFieldDelegate {
     var color = CanvasView.colors[CanvasView.firstColorIndex].cgColor
     var strokeWidth = CanvasView.strokeWidths[CanvasView.firstStrokeWidthIndex]
     var strokes = [Stroke]()
+    var texts = [Text]()
     var currentStroke:Stroke!
     
     required init?(coder aDecoder: NSCoder) {
@@ -74,6 +75,10 @@ class CanvasView: UIView, UITextFieldDelegate {
             
             currentStroke.draw(on: context)
         }
+        
+        for text in texts {
+            text.draw()
+        }
     }
     
     func ontap(sender: UITapGestureRecognizer) {
@@ -100,6 +105,8 @@ class CanvasView: UIView, UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         if let text = textField.text {
             print(text)
+            texts.append(Text(text, at: textField.frame, color: color, size: strokeWidth))
+            setNeedsDisplay()  // to invoke draw(_)
         }
         
         textField.removeFromSuperview()
@@ -121,6 +128,25 @@ class CanvasView: UIView, UITextFieldDelegate {
         init(name: String, cgColor: CGColor) {
             self.name = name
             self.cgColor = cgColor
+        }
+    }
+    
+    class Text {
+        let string: String
+        let frame: CGRect
+        let attr: [String: Any]
+        
+        init(_ string: String, at frame: CGRect, color: CGColor, size: Double) {
+            self.string = string
+            self.frame = frame
+            self.attr = [
+                "NSForegroundColorAttributeName": UIColor(cgColor: color),
+                "NSFontAttributeName": UIFont.systemFont(ofSize: CGFloat(size)),
+            ]
+        }
+        
+        func draw() {
+            string.draw(in: frame, withAttributes: attr)
         }
     }
     
