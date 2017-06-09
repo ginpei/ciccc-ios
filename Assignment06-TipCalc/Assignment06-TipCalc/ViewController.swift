@@ -9,6 +9,8 @@
 import UIKit
 
 class ViewController: UIViewController {
+    @IBOutlet weak var tipInPercentageView: UIView!
+    @IBOutlet weak var tipInDollarsView: UIView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,5 +23,10 @@ class ViewController: UIViewController {
     }
 
 
+    @IBAction func toggleTipInPercentage_valueChanged(_ sender: Any) {
+        let turnedOn = (sender as! UISwitch).isOn
+        tipInPercentageView.isHidden = !turnedOn
+        tipInDollarsView.isHidden = turnedOn
+    }
 }
 
