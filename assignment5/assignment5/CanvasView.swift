@@ -50,6 +50,11 @@ class CanvasView: UIView {
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let touch = touches.first {
+            currentStroke.appendPoint(touch.location(in: self))
+            setNeedsDisplay()  // to invoke draw(_)
+        }
+        
         strokes.append(currentStroke)
     }
 
