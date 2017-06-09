@@ -23,7 +23,8 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        updateCalculation()
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,6 +33,9 @@ class ViewController: UIViewController {
     }
     
     func updateCalculation() {
+        billAmountTextField.text = String(tipCalculation.billAmount)
+        tipInPercentageTextField.text = String(tipCalculation.tipInPercentage)
+        tipInDollarsTextField.text = String(tipCalculation.tipInDollars)
         calculationLabel.text = "$ \(tipCalculation.billAmount) + $\(tipCalculation.tipInDollars)"
         resultLabel.text = "$ \(tipCalculation.billAmount + tipCalculation.tipInDollars)"
     }
