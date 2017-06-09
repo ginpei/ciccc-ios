@@ -69,15 +69,18 @@ class ViewController: UIViewController {
     }
     
     @IBAction func set10percent_touchUpInside(_ sender: Any) {
-        print("set 10%")
+        tipCalculation.tipInPercentage = 10
+        updateCalculation()
     }
     
     @IBAction func set15percent_touchUpInside(_ sender: Any) {
-        print("set 15%")
+        tipCalculation.tipInPercentage = 15
+        updateCalculation()
     }
     
     @IBAction func set20percent_touchUpInside(_ sender: Any) {
-        print("set 20%")
+        tipCalculation.tipInPercentage = 20
+        updateCalculation()
     }
 }
 
