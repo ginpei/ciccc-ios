@@ -127,8 +127,8 @@ class CanvasView: UIView, UITextFieldDelegate {
     }
     
     class Content {
-        let color:CGColor
-        let size:Double
+        let color: CGColor
+        let size: Double
         
         init(color: CGColor, size: Double) {
             self.color = color
@@ -143,7 +143,7 @@ class CanvasView: UIView, UITextFieldDelegate {
     class Stroke: Content {
         let maxDistance = 300.0
         
-        var points:[CGPoint] = []
+        var points: [CGPoint] = []
         
         func appendPoint(_ point: CGPoint) {
             points.append(point)
