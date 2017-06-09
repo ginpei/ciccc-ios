@@ -54,6 +54,8 @@ class CanvasView: UIView {
     }
     
     class Stroke {
+        let maxDistance = 100.0
+        
         let color:CGColor
         var strokeWidth:Double
         var points:[CGPoint] = []
@@ -70,17 +72,25 @@ class CanvasView: UIView {
         func draw(on context: CGContext) {
             context.beginPath()
             
-            context.move(to: points[0])
-            for point in points {
-                context.addLine(to: point)
-                context.move(to: point)
-            }
-            
             context.setStrokeColor(color)
-            context.setLineWidth(CGFloat(strokeWidth))
             context.setLineCap(CGLineCap.round)
             context.setLineJoin(CGLineJoin.round)
-            context.strokePath()
+            
+            var last = points[0]
+            context.move(to: last)
+            for point in points {
+                
+                let distance = Double(abs(point.x - last.x) + abs(point.y - last.y))
+                let speedRate = max(0.5, min(1, distance / maxDistance))
+                let width = strokeWidth * speedRate
+                
+                context.addLine(to: point)
+                context.setLineWidth(CGFloat(width))
+                context.strokePath()
+                
+                last = point
+                context.move(to: last)
+            }
         }
     }
 }
