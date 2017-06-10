@@ -24,7 +24,12 @@ class TipCalculation {
                 return _tipInPercentage
             }
             else {
-                return Int(100 * _tipInDollars / billAmount)
+                if billAmount > 0 {
+                    return Int(100 * _tipInDollars / billAmount)
+                }
+                else {
+                    return 0
+                }
             }
         }
         set(value) {

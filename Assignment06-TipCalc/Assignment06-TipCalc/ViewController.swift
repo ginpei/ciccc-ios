@@ -34,10 +34,12 @@ class ViewController: UIViewController {
     
     func updateCalculation() {
         billAmountTextField.text = String(tipCalculation.billAmount)
-        tipInPercentageTextField.text = String(tipCalculation.tipInPercentage)
-        tipInDollarsTextField.text = String(tipCalculation.tipInDollars)
         
+        tipInPercentageTextField.text = String(tipCalculation.tipInPercentage)
         tipInPercentageSlider.value = Float(tipCalculation.tipInPercentage)
+        
+        tipInDollarsTextField.text = String(tipCalculation.tipInDollars)
+        tipInPercentageForDallarsLabel.text = "(\(tipCalculation.tipInPercentage) %)"
         
         calculationLabel.text = "$ \(tipCalculation.billAmount) + $\(tipCalculation.tipInDollars)"
         resultLabel.text = "$ \(tipCalculation.billAmount + tipCalculation.tipInDollars)"
