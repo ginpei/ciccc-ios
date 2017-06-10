@@ -9,10 +9,15 @@
 import UIKit
 
 class ViewController: UIViewController {
+    @IBOutlet weak var myScrollView: MyScrollView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        myScrollView.frame.origin.y = -100
     }
 
     override func didReceiveMemoryWarning() {
