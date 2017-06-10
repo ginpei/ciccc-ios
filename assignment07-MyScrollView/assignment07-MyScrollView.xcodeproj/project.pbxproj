@@ -12,6 +12,7 @@
 		E443D7501EEB7FE40071FD73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E443D74E1EEB7FE40071FD73 /* Main.storyboard */; };
 		E443D7521EEB7FE50071FD73 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E443D7511EEB7FE50071FD73 /* Assets.xcassets */; };
 		E443D7551EEB7FE50071FD73 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E443D7531EEB7FE50071FD73 /* LaunchScreen.storyboard */; };
+		E443D75F1EEB822E0071FD73 /* MyScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E443D75E1EEB822E0071FD73 /* MyScrollView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		E443D7511EEB7FE50071FD73 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E443D7541EEB7FE50071FD73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E443D7561EEB7FE50071FD73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E443D75E1EEB822E0071FD73 /* MyScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyScrollView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 			children = (
 				E443D74A1EEB7FE40071FD73 /* AppDelegate.swift */,
 				E443D74C1EEB7FE40071FD73 /* ViewController.swift */,
+				E443D75E1EEB822E0071FD73 /* MyScrollView.swift */,
 				E443D74E1EEB7FE40071FD73 /* Main.storyboard */,
 				E443D7511EEB7FE50071FD73 /* Assets.xcassets */,
 				E443D7531EEB7FE50071FD73 /* LaunchScreen.storyboard */,
@@ -137,6 +140,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E443D74D1EEB7FE40071FD73 /* ViewController.swift in Sources */,
+				E443D75F1EEB822E0071FD73 /* MyScrollView.swift in Sources */,
 				E443D74B1EEB7FE40071FD73 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -299,6 +303,7 @@
 				E443D75B1EEB7FE50071FD73 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
