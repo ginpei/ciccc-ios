@@ -56,7 +56,12 @@ class TipCalculation {
                 _tipInDollars = value
             }
             else {
-                _tipInPercentage = Int(100 * value / billAmount)
+                if billAmount > 0 {
+                    _tipInPercentage = Int(100 * value / billAmount)
+                }
+                else {
+                    _tipInPercentage = 0
+                }
             }
         }
     }
