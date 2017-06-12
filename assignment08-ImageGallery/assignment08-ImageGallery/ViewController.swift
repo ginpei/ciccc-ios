@@ -9,10 +9,17 @@
 import UIKit
 
 class ViewController: UIViewController {
+    @IBOutlet weak var scrollView: UIScrollView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        let imageView = UIImageView()
+        imageView.backgroundColor = UIColor.red
+        imageView.frame.origin.y = 500
+        imageView.frame.size.width = 300.0
+        imageView.frame.size.height = 300.0
+        scrollView.addSubview(imageView)
     }
 
     override func didReceiveMemoryWarning() {
