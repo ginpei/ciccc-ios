@@ -14,8 +14,12 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        addImageView(at: 0)
+    }
+    
+    func addImageView(at index: Int) {
         let imageView = UIImageView()
-        imageView.image = #imageLiteral(resourceName: "img1")
+        imageView.image = UIImage(named: "img\(index)")
         imageView.translatesAutoresizingMaskIntoConstraints = false
         
         scrollView.addSubview(imageView)
