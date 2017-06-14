@@ -15,7 +15,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         let imageView = UIImageView()
-        imageView.backgroundColor = UIColor.red
+        imageView.image = #imageLiteral(resourceName: "img1")
         imageView.translatesAutoresizingMaskIntoConstraints = false
         
         scrollView.addSubview(imageView)
