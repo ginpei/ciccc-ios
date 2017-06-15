@@ -10,25 +10,51 @@ import UIKit
 
 class ViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
+    
+    let imageNames = [
+        "img0",
+        "img1",
+        "img2",
+    ]
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        addImageView(at: 0)
+        let container = prepareContainer(numOfItems: imageNames.count)
+        for (index, name) in imageNames.enumerated() {
+            prepareImage(at: index, name: name, to: container)
+        }
     }
     
-    func addImageView(at index: Int) {
-        let imageView = UIImageView()
-        imageView.image = UIImage(named: "img\(index)")
-        imageView.translatesAutoresizingMaskIntoConstraints = false
+    func prepareContainer(numOfItems: Int) -> UIView {
+        let v = UIView()
+        v.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.addSubview(v)
         
-        scrollView.addSubview(imageView)
+        v.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 0).isActive = true
+        v.heightAnchor.constraint(equalTo: scrollView.heightAnchor).isActive = true
+        v.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: 0).isActive = true
         
-        imageView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 0).isActive = true
-        imageView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 1).isActive = true
+        let width = view.bounds.width * CGFloat(numOfItems)
+        v.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor).isActive = true
+        v.widthAnchor.constraint(equalToConstant: width).isActive = true
+        v.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor).isActive = true
         
-        imageView.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 0).isActive = true
-        imageView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 1).isActive = true
+        return v
+    }
+    
+    func prepareImage(at index: Int, name: String, to: UIView) {
+        let v = UIImageView()
+        v.image = UIImage(named: name)
+        
+        let width = view.bounds.width
+        v.frame.origin.x = width * CGFloat(index)
+        v.frame.size.width = width
+        
+        v.frame.origin.y = 0
+        v.frame.size.height = view.bounds.height
+        
+        to.addSubview(v)
     }
 
     override func didReceiveMemoryWarning() {
