@@ -22,7 +22,10 @@ class ViewController: UIViewController {
         
         let container = prepareContainer(numOfItems: imageNames.count)
         for (index, name) in imageNames.enumerated() {
-            prepareImage(at: index, name: name, to: container)
+            let v = prepareImage(at: index, name: name, to: container)
+            
+            let g = UITapGestureRecognizer(target: self, action: #selector(ontap))
+            v.addGestureRecognizer(g)
         }
     }
     
@@ -43,9 +46,10 @@ class ViewController: UIViewController {
         return v
     }
     
-    func prepareImage(at index: Int, name: String, to: UIView) {
+    func prepareImage(at index: Int, name: String, to: UIView) -> UIImageView {
         let v = UIImageView()
         v.image = UIImage(named: name)
+        v.isUserInteractionEnabled = true
         
         let width = view.bounds.width
         v.frame.origin.x = width * CGFloat(index)
@@ -55,13 +59,21 @@ class ViewController: UIViewController {
         v.frame.size.height = view.bounds.height
         
         to.addSubview(v)
+        
+        return v
     }
-
+    
+    func ontap(sender: UITapGestureRecognizer) {
+        if let v = sender.view as? UIImageView {
+            print("hello \(v.image)")
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    
+    
 }
 
