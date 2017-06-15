@@ -17,6 +17,8 @@ class ViewController: UIViewController {
         "img2",
         ]
     
+    var currentImage: UIImage?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -65,8 +67,14 @@ class ViewController: UIViewController {
     
     func ontap(sender: UITapGestureRecognizer) {
         if let v = sender.view as? UIImageView {
+            currentImage = v.image
             performSegue(withIdentifier: "detail", sender: self)
         }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let view = segue.destination as! DetailViewController
+        view.image = currentImage
     }
     
     override func didReceiveMemoryWarning() {

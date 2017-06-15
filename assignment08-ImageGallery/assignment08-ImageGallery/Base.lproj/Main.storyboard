@@ -54,6 +54,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="if4-UF-h6S">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Sc-v6-37X">
                                 <rect key="frame" x="164" y="318" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -64,11 +67,20 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="if4-UF-h6S" firstAttribute="leading" secondItem="D2V-yB-GSM" secondAttribute="leading" id="6Ap-bo-1Uf"/>
+                            <constraint firstItem="if4-UF-h6S" firstAttribute="top" secondItem="D2V-yB-GSM" secondAttribute="top" id="aqe-Nb-Qi0"/>
+                            <constraint firstAttribute="trailing" secondItem="if4-UF-h6S" secondAttribute="trailing" id="h8b-0k-tWA"/>
+                            <constraint firstItem="sPv-1x-hPj" firstAttribute="top" secondItem="if4-UF-h6S" secondAttribute="bottom" id="mxf-Rm-v59"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="imageView" destination="if4-UF-h6S" id="wYB-wt-jve"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x7g-aD-n8C" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1041" y="130"/>
+            <point key="canvasLocation" x="1040.8" y="129.98500749625188"/>
         </scene>
     </scenes>
 </document>
