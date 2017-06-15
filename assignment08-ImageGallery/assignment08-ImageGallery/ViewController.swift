@@ -15,8 +15,8 @@ class ViewController: UIViewController {
         "img0",
         "img1",
         "img2",
-    ]
-
+        ]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
