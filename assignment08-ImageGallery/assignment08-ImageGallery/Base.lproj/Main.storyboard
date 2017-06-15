@@ -35,11 +35,40 @@
                     </view>
                     <connections>
                         <outlet property="scrollView" destination="HPE-sB-yjM" id="90U-2b-s2X"/>
+                        <segue destination="cdg-WV-XJe" kind="show" identifier="detail" id="oah-IS-SL6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="129.98500749625188"/>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="3Oq-FB-rn0">
+            <objects>
+                <viewController id="cdg-WV-XJe" customClass="DetailViewController" customModule="assignment08_ImageGallery" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="MCI-Cp-ejS"/>
+                        <viewControllerLayoutGuide type="bottom" id="sPv-1x-hPj"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="D2V-yB-GSM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Sc-v6-37X">
+                                <rect key="frame" x="164" y="318" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <action selector="back_onTouchUpInside:" destination="cdg-WV-XJe" eventType="touchUpInside" id="CBl-xi-HeK"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x7g-aD-n8C" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1041" y="130"/>
         </scene>
     </scenes>
 </document>

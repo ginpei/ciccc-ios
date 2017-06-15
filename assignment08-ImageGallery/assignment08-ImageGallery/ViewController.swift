@@ -65,7 +65,7 @@ class ViewController: UIViewController {
     
     func ontap(sender: UITapGestureRecognizer) {
         if let v = sender.view as? UIImageView {
-            print("hello \(v.image)")
+            performSegue(withIdentifier: "detail", sender: self)
         }
     }
     
