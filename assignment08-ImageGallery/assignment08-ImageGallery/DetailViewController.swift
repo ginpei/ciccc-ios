@@ -16,8 +16,14 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        if image == nil {
+            image = UIImage(named: "img0")
+        }
+        
         if let i = image {
             imageView.image = i
+            imageView.widthAnchor.constraint(equalToConstant: i.size.width).isActive = true
+            imageView.heightAnchor.constraint(equalToConstant: i.size.height).isActive = true
         }
     }
 
