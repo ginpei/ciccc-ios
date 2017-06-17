@@ -16,6 +16,10 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        prepareImage()
+    }
+    
+    func prepareImage() {
         if image == nil {
             image = UIImage(named: "img0")
         }
