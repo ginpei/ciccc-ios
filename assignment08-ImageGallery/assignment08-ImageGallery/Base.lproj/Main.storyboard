@@ -88,6 +88,7 @@
                     </view>
                     <connections>
                         <outlet property="imageView" destination="VjF-UY-Q4C" id="v5A-cB-Uvp"/>
+                        <outlet property="scrollView" destination="ack-9s-i7y" id="95V-5B-mlm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x7g-aD-n8C" userLabel="First Responder" sceneMemberID="firstResponder"/>

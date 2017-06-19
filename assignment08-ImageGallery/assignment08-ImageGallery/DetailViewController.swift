@@ -9,6 +9,7 @@
 import UIKit
 
 class DetailViewController: UIViewController {
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var imageView: UIImageView!
     
     var image: UIImage?
@@ -24,7 +25,7 @@ class DetailViewController: UIViewController {
 
         prepareImage()
         
-        imageView.addGestureRecognizer(UIPinchGestureRecognizer(target: self, action: #selector(onpinch)))
+        scrollView.addGestureRecognizer(UIPinchGestureRecognizer(target: self, action: #selector(onpinch)))
     }
     
     func prepareImage() {
@@ -50,10 +51,8 @@ class DetailViewController: UIViewController {
     func updateImageSize() {
         if let ow = originalWidth, let oh = originalHeight, let wc = widthConstraint, let hc = heightConstraint {
             let currentScale = lastScale * pinchingScale
-            let width = max(ow * currentScale, view.frame.width)
-            let height = max(oh * currentScale, view.frame.height)
-            
-            // TODO: keep aspect ratio
+            let width = ow * currentScale
+            let height = oh * currentScale
             
             wc.constant = width
             hc.constant = height
@@ -66,7 +65,6 @@ class DetailViewController: UIViewController {
             updateImageSize()
         }
         else if sender.state == .ended {
-            // TODO limit max/min
             lastScale *= pinchingScale
         }
     }
