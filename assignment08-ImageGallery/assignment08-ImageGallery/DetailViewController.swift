@@ -12,11 +12,18 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     
     var image: UIImage?
+    var originalWidth: CGFloat?
+    var originalHeight: CGFloat?
+    var scale = CGFloat(1.0)  // 1.0 == original image size, not screen size
+    var widthConstraint: NSLayoutConstraint?
+    var heightConstraint: NSLayoutConstraint?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         prepareImage()
+        
+        imageView.addGestureRecognizer(UIPinchGestureRecognizer(target: self, action: #selector(onpinch)))
     }
     
     func prepareImage() {
@@ -26,9 +33,35 @@ class DetailViewController: UIViewController {
         
         if let i = image {
             imageView.image = i
-            imageView.widthAnchor.constraint(equalToConstant: i.size.width).isActive = true
-            imageView.heightAnchor.constraint(equalToConstant: i.size.height).isActive = true
+            
+            originalWidth = i.size.width
+            widthConstraint = imageView.widthAnchor.constraint(equalToConstant: originalWidth!)
+            widthConstraint!.isActive = true
+            
+            originalHeight = i.size.height
+            heightConstraint = imageView.heightAnchor.constraint(equalToConstant: originalHeight!)
+            heightConstraint!.isActive = true
+            
+            updateImageSize()
         }
+    }
+    
+    func updateImageSize() {
+        if let ow = originalWidth, let oh = originalHeight, let wc = widthConstraint, let hc = heightConstraint {
+            let width = max(ow * scale, view.frame.width)
+            let height = max(oh * scale, view.frame.height)
+            
+            // TODO: keep aspect ratio
+            
+            wc.constant = width
+            hc.constant = height
+        }
+    }
+    
+    func onpinch(sender: UIPinchGestureRecognizer) {
+        // TODO: keep past scale
+        scale = sender.scale
+        updateImageSize()
     }
 
     override func didReceiveMemoryWarning() {
