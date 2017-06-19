@@ -25,6 +25,8 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         super.viewDidLoad()
         
         pageControl.numberOfPages = imageNames.count
+        pageControl.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(pageControl_tap)))
+        
         scrollView.delegate = self
         
         let container = prepareContainer(numOfItems: imageNames.count)
@@ -90,6 +92,14 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let index = Int(scrollView.contentOffset.x / view.bounds.width + 0.5)
         pageControl.currentPage = index
+    }
+    
+    func pageControl_tap(sender: UITapGestureRecognizer) {
+        let index = (pageControl.currentPage + 1) % pageControl.numberOfPages
+        
+        let width = view.bounds.width
+        let x = width * CGFloat(index)
+        scrollView.scrollRectToVisible(CGRect(x: x, y: 0, width: x+1, height: 1), animated: true)
     }
 }
 
