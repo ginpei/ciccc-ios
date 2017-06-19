@@ -14,7 +14,8 @@ class DetailViewController: UIViewController {
     var image: UIImage?
     var originalWidth: CGFloat?
     var originalHeight: CGFloat?
-    var scale = CGFloat(1.0)  // 1.0 == original image size, not screen size
+    var lastScale = CGFloat(1.0)  // 1.0 == original image size, not screen size
+    var pinchingScale = CGFloat(1.0)
     var widthConstraint: NSLayoutConstraint?
     var heightConstraint: NSLayoutConstraint?
 
@@ -48,8 +49,9 @@ class DetailViewController: UIViewController {
     
     func updateImageSize() {
         if let ow = originalWidth, let oh = originalHeight, let wc = widthConstraint, let hc = heightConstraint {
-            let width = max(ow * scale, view.frame.width)
-            let height = max(oh * scale, view.frame.height)
+            let currentScale = lastScale * pinchingScale
+            let width = max(ow * currentScale, view.frame.width)
+            let height = max(oh * currentScale, view.frame.height)
             
             // TODO: keep aspect ratio
             
@@ -59,9 +61,14 @@ class DetailViewController: UIViewController {
     }
     
     func onpinch(sender: UIPinchGestureRecognizer) {
-        // TODO: keep past scale
-        scale = sender.scale
-        updateImageSize()
+        if sender.state == .changed {
+            pinchingScale = sender.scale
+            updateImageSize()
+        }
+        else if sender.state == .ended {
+            // TODO limit max/min
+            lastScale *= pinchingScale
+        }
     }
 
     override func didReceiveMemoryWarning() {
