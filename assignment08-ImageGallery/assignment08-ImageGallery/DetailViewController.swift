@@ -24,6 +24,8 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
 
         prepareImage()
+        initScale()
+        updateImageSize()
         
         scrollView.addGestureRecognizer(UIPinchGestureRecognizer(target: self, action: #selector(onpinch)))
     }
@@ -43,8 +45,14 @@ class DetailViewController: UIViewController {
             originalHeight = i.size.height
             heightConstraint = imageView.heightAnchor.constraint(equalToConstant: originalHeight!)
             heightConstraint!.isActive = true
-            
-            updateImageSize()
+        }
+    }
+    
+    func initScale() {
+        if let ow = originalWidth, let oh = originalHeight {
+            let scaleWidth = view.frame.width / ow
+            let scaleHeight = view.frame.height / oh
+            lastScale = min(scaleWidth, scaleHeight)
         }
     }
     
