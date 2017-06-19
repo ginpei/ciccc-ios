@@ -8,7 +8,8 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UIScrollViewDelegate {
+    @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var scrollView: UIScrollView!
     
     let imageNames = [
@@ -17,10 +18,14 @@ class ViewController: UIViewController {
         "img2",
         ]
     
+    var contentWidth = CGFloat(0.0)
     var currentImage: UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        pageControl.numberOfPages = imageNames.count
+        scrollView.delegate = self
         
         let container = prepareContainer(numOfItems: imageNames.count)
         for (index, name) in imageNames.enumerated() {
@@ -82,6 +87,9 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let index = Int(scrollView.contentOffset.x / view.bounds.width + 0.5)
+        pageControl.currentPage = index
+    }
 }
 
