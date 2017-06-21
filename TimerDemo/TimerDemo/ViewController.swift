@@ -13,7 +13,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var startButton: UIButton!
     
     var timer = Timer()
-    var startedAt: Date? = nil
+    var lastTime = Date()
+    var pastTime = 0.0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,20 +27,50 @@ class ViewController: UIViewController {
     }
     
     func start() {
-        startedAt = Date()
+        stop()
+        
+        lastTime = Date()
         timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(timer_tick), userInfo: nil, repeats: true)
+    }
+    
+    func stop() {
+        timer.invalidate()
+    }
+    
+    func reset() {
+        stop()
+        pastTime = 0
+        updateTimeLabel()
+    }
+    
+    func updateTimeLabel() {
+        let text = String(format: "%.02f", pastTime)
+        timeLabel.text = text
     }
 
     @IBAction func startButton_touchUpInside(_ sender: Any) {
-        start()
+        if !timer.isValid {
+            start()
+        }
+    }
+    
+    @IBAction func pauseButton_touchUpInside(_ sender: Any) {
+        stop()
+    }
+    
+    @IBAction func resetButton_touchUpInside(_ sender: Any) {
+        reset()
     }
     
     func timer_tick() {
-        if let s = startedAt {
-            let intervalSince = Date().timeIntervalSince(s)
-            let text = String(format: "%.02f", intervalSince)
-            timeLabel.text = text
-        }
+        let now = Date()
+        
+        let intervalSince = now.timeIntervalSince(lastTime)
+        pastTime += intervalSince
+        
+        lastTime = now
+        
+        updateTimeLabel()
     }
 }
 

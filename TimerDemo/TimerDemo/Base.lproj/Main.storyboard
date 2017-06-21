@@ -32,14 +32,33 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zoe-bW-iKe">
-                                        <rect key="frame" x="97" y="90" width="46" height="30"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="U2E-qd-acm">
+                                        <rect key="frame" x="8" y="90" width="115" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Start"/>
-                                        <connections>
-                                            <action selector="startButton_touchUpInside:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QNn-5H-KWm"/>
-                                        </connections>
-                                    </button>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zoe-bW-iKe">
+                                                <rect key="frame" x="0.0" y="0.0" width="34" height="30"/>
+                                                <state key="normal" title="Start"/>
+                                                <connections>
+                                                    <action selector="startButton_touchUpInside:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QNn-5H-KWm"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K1P-ZQ-SKt">
+                                                <rect key="frame" x="34" y="0.0" width="42" height="30"/>
+                                                <state key="normal" title="Pause"/>
+                                                <connections>
+                                                    <action selector="pauseButton_touchUpInside:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Yyu-XT-KKA"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ViT-z4-xlp">
+                                                <rect key="frame" x="76" y="0.0" width="39" height="30"/>
+                                                <state key="normal" title="Reset"/>
+                                                <connections>
+                                                    <action selector="resetButton_touchUpInside:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zeQ-Hr-mCs"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
