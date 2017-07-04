@@ -16,7 +16,7 @@ struct FlickrAPI {
     private static let baseURLString = "https://api.flickr.com/services/rest"
     private static let apiKey = ProcessInfo.processInfo.environment["FLICKR_API_KEY"]!  // from "Edit Scheme"->"Arguments"->"Environment Variables"
     
-    private static func interestingnessURL() -> URL {
+    static func interestingnessURL() -> URL {
         return flickrURL(method: .interestingnessPhotos, parameters: ["extrax":"url_h,date_taken"])
     }
     

@@ -10,11 +10,13 @@ import UIKit
 
 class PhotoViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
+    
+    var store: PhotoStore!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        store.fetchInterestingnessPhotos()
     }
 
     override func didReceiveMemoryWarning() {
