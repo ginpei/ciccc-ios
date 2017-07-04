@@ -12,6 +12,7 @@
 		E48FF7591F0C349D00B2248B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E48FF7571F0C349D00B2248B /* Main.storyboard */; };
 		E48FF75B1F0C349D00B2248B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E48FF75A1F0C349D00B2248B /* Assets.xcassets */; };
 		E48FF75E1F0C349D00B2248B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E48FF75C1F0C349D00B2248B /* LaunchScreen.storyboard */; };
+		E48FF7681F0C350F00B2248B /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48FF7671F0C350F00B2248B /* PhotoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		E48FF75A1F0C349D00B2248B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E48FF75D1F0C349D00B2248B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E48FF75F1F0C349D00B2248B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E48FF7671F0C350F00B2248B /* PhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 			children = (
 				E48FF7531F0C349D00B2248B /* AppDelegate.swift */,
 				E48FF7551F0C349D00B2248B /* ViewController.swift */,
+				E48FF7671F0C350F00B2248B /* PhotoViewController.swift */,
 				E48FF7571F0C349D00B2248B /* Main.storyboard */,
 				E48FF75A1F0C349D00B2248B /* Assets.xcassets */,
 				E48FF75C1F0C349D00B2248B /* LaunchScreen.storyboard */,
@@ -138,6 +141,7 @@
 			files = (
 				E48FF7561F0C349D00B2248B /* ViewController.swift in Sources */,
 				E48FF7541F0C349D00B2248B /* AppDelegate.swift in Sources */,
+				E48FF7681F0C350F00B2248B /* PhotoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,6 +303,7 @@
 				E48FF7641F0C349D00B2248B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
