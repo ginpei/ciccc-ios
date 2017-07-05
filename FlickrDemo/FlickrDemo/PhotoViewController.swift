@@ -16,7 +16,19 @@ class PhotoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        store.fetchInterestingnessPhotos()
+        store.fetchInterestingnessPhotos() {
+            (result, response, error) in
+            
+            if let e = error {
+                print("ERROR \(e)")
+            }
+            else if let r = result {
+                print(r)
+            }
+            else {
+                print("Oops!")
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
