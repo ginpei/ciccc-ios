@@ -65,7 +65,7 @@ struct FlickrAPI {
             guard let jsonDictionary = json as? [AnyHashable:Any],
                 let photosJson = jsonDictionary["photos"] as? [String:Any],
                 let photoJsonArray = photosJson["photo"] as? [[String:Any]] else {
-                    NSLog("Failed to parse")
+                    NSLog("Failed to parse: %@", String(data: data, encoding: .utf8) ?? "(Couldn't to convert to String)")
                     return .failure(FlickrError.invalidJSONData)
             }
             
