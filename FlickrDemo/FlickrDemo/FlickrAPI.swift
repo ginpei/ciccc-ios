@@ -27,7 +27,7 @@ struct FlickrAPI {
     }()
     
     static func interestingnessURL() -> URL {
-        return flickrURL(method: .interestingnessPhotos, parameters: ["extras":"url_h,date_taken"])
+        return flickrURL(method: .interestingnessPhotos, parameters: ["extras":"url_h,url_b,url_m,date_taken"])
     }
     
     private static func flickrURL(method: Method, parameters: [String:String]?) -> URL {
@@ -90,8 +90,7 @@ struct FlickrAPI {
     static func photo(fromJSON json: [String: Any]) -> Photo? {
         if let photoID = json["id"] as? String,
             let title = json["title"] as? String,
-            let urlString = json["url_h"] as? String,
-            let url = URL(string: urlString),
+            let url = photoUrlOf(json: json),
             let dateTakenString = json["datetaken"] as? String,
             let dateTaken = dateFormatter.date(from: dateTakenString)
         {
@@ -99,6 +98,27 @@ struct FlickrAPI {
         }
         else {
             NSLog("Failed to create a Photo object: %@", json)
+            return nil
+        }
+    }
+    
+    static func photoUrlOf(json: [String: Any]) -> URL? {
+        var urlString: String? = nil
+        
+        if let u = json["url_h"] as? String {
+            urlString = u
+        }
+        else if let u = json["url_b"] as? String {
+            urlString = u
+        }
+        else if let u = json["url_m"] as? String {
+            urlString = u
+        }
+        
+        if urlString != nil {
+            return URL(string: urlString!)
+        }
+        else {
             return nil
         }
     }
