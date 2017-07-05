@@ -17,17 +17,21 @@ class PhotoViewController: UIViewController {
         super.viewDidLoad()
 
         store.fetchInterestingnessPhotos() {
-            (result, response, error) in
+            (result, response) in
             
-            if let e = error {
-                print("ERROR \(e)")
+            self.showResult(result)
+        }
+    }
+    
+    func showResult(_ result:PhotoResult) {
+        switch result {
+        case .success(let photos):
+            print(photos.count)
+            for p in photos {
+                print(p.url)
             }
-            else if let r = result {
-                print(r)
-            }
-            else {
-                print("Oops!")
-            }
+        case let .failure(error):
+            print("--- ERR \(String(describing: error))")
         }
     }
 

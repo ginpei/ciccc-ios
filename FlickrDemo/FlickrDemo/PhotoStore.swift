@@ -10,7 +10,7 @@ import Foundation
 
 enum PhotoResult {
     case success([Photo])
-    case failure(Error)
+    case failure(Error?)
 }
 
 class PhotoStore {
@@ -26,7 +26,7 @@ class PhotoStore {
 //        return FlickrAPI.photos(fromJSON: data)
 //    }
     
-    func fetchInterestingnessPhotos(completionHandler: @escaping (PhotoResult?, URLResponse?, Error?) -> Void) {
+    func fetchInterestingnessPhotos(completionHandler: @escaping (PhotoResult, URLResponse?) -> Void) {
         let url = FlickrAPI.interestingnessURL()
         let request = URLRequest(url: url)
         let task = session.dataTask(with: request) {
@@ -34,10 +34,10 @@ class PhotoStore {
             
             if let d = data {
                 let result = FlickrAPI.photos(fromJSON: d)
-                completionHandler(result, response, error)
+                completionHandler(result, response)
             }
             else {
-                completionHandler(nil, response, error)
+                completionHandler(PhotoResult.failure(error), response)
             }
         }
         
