@@ -26,12 +26,35 @@ class PhotoViewController: UIViewController {
     func showResult(_ result:PhotoResult) {
         switch result {
         case .success(let photos):
-            print(photos.count)
-            for p in photos {
-                print(p.url)
+//            for p in photos {
+//                createImage(p)
+//            }
+            if photos.count > 0 {
+                createImage(photos[0])
             }
         case let .failure(error):
             print("--- ERR \(String(describing: error))")
+        }
+    }
+    
+    func createImage(_ photo: Photo) {
+//        let imageView = UIImageView()
+//        OperationQueue.main.addOperation {
+//            self.view.addSubview(imageView)
+//        }
+        let imageView = self.imageView!
+        
+        store.fetchImage(for: photo) {
+            (result) in
+            
+            OperationQueue.main.addOperation {
+                switch result {
+                case .success(let data):
+                    imageView.image = UIImage(data: data)
+                case .failure(let error):
+                    print("ERROR in createImage \(error)")
+                }
+            }
         }
     }
 
