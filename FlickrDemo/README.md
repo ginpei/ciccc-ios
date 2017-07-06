@@ -14,13 +14,10 @@ Open "The App Garden":
 
 - [The App Garden on Flickr](https://www.flickr.com/services/)
 
-Follow the link "Apps By You" at "Your Apps" on right side.
-
-You should see the list of your app. If you haven't created anything, try "Get Another Key".
-
-Open your app's dashboard from the name and click the link "Admin → View" on right side.
-
-"Key" is the one. ("Secret" is another one.)
+1. Follow the link "Apps By You" at "Your Apps" on right side.
+2. You should see the list of your app. If you haven't created anything, try "Get Another Key".
+3. Open your app's dashboard from the name and click the link "Admin → View" on right side.
+4. "Key" is the one. ("Secret" is another one.)
 
 ## Set environment variables
 
