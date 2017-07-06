@@ -27,7 +27,7 @@ struct FlickrAPI {
     }()
     
     static func interestingnessURL() -> URL {
-        return flickrURL(method: .interestingnessPhotos, parameters: ["extras":"url_h,url_b,url_m,date_taken"])
+        return flickrURL(method: .interestingnessPhotos, parameters: ["extras":"url_s,url_h,url_b,url_m,date_taken"])
     }
     
     private static func flickrURL(method: Method, parameters: [String:String]?) -> URL {
@@ -105,7 +105,10 @@ struct FlickrAPI {
     static func photoUrlOf(json: [String: Any]) -> URL? {
         var urlString: String? = nil
         
-        if let u = json["url_h"] as? String {
+        if let u = json["url_s"] as? String {
+            urlString = u
+        }
+        else if let u = json["url_h"] as? String {
             urlString = u
         }
         else if let u = json["url_b"] as? String {

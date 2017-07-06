@@ -16,6 +16,7 @@ class PhotoViewController: UIViewController, UICollectionViewDataSource {
     
     var store: PhotoStore!
     var photos = [Photo]()
+    var photoImages = [UIImage?]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +31,11 @@ class PhotoViewController: UIViewController, UICollectionViewDataSource {
     func showResult(_ result:PhotoResult) {
         switch result {
         case .success(let photos):
-            self.photos.append(contentsOf: photos)
+            for (i, p) in photos.enumerated() {
+                self.photos.append(p)
+                self.photoImages.append(nil)
+                createImage(p, at: i)
+            }
             OperationQueue.main.addOperation {
                 self.photoCollectionView.reloadData()
             }
@@ -39,18 +44,18 @@ class PhotoViewController: UIViewController, UICollectionViewDataSource {
         }
     }
     
-    func createImage(_ photo: Photo) {
+    func createImage(_ photo: Photo, at index: Int) {
         store.fetchImage(for: photo) {
             (result) in
             
             OperationQueue.main.addOperation {
                 switch result {
                 case .success(let data):
-                    print("Loaded: \(photo.url)")
-//                    TODO (void)reloadItemsAtIndexPaths:(NSArray *)indexPaths
-                    // imageView.image = UIImage(data: data)
+                    self.photoImages[index] = UIImage(data: data)
+                    self.photoCollectionView.reloadItems(at: [IndexPath(row: index, section: 0)])
                 case .failure(let error):
                     print("ERROR in createImage \(error)")
+                    self.photoImages[index] = nil
                 }
             }
         }
@@ -73,14 +78,12 @@ class PhotoViewController: UIViewController, UICollectionViewDataSource {
     */
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print("# photos.count=\(photos.count)")
         return photos.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        print("# indexPath.row=\(indexPath.row)")
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath)
-        cell.backgroundColor = UIColor.lightGray
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! PhotoCollectionViewCell
+        cell.imageView.image = photoImages[indexPath.row]
         return cell
     }
 }

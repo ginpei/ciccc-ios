@@ -43,6 +43,7 @@
                                                 </imageView>
                                             </subviews>
                                         </view>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="KUd-jX-yvD" secondAttribute="trailing" id="Fce-ja-Jl6"/>
                                             <constraint firstItem="KUd-jX-yvD" firstAttribute="leading" secondItem="GZs-fz-QBO" secondAttribute="leading" id="XdY-se-ElP"/>
