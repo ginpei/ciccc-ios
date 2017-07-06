@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -22,7 +23,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="WRX-kQ-rca">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="16" y="64" width="343" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ZmN-Yo-dsJ">
                                     <size key="itemSize" width="50" height="50"/>
@@ -62,10 +63,10 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="WRX-kQ-rca" secondAttribute="trailing" id="R4Q-Hu-G4V"/>
-                            <constraint firstItem="WRX-kQ-rca" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="aK5-dB-cFG"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="WRX-kQ-rca" secondAttribute="bottom" id="dvC-pa-4lY"/>
-                            <constraint firstItem="WRX-kQ-rca" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="oG1-ut-osV"/>
+                            <constraint firstItem="WRX-kQ-rca" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="1aR-wf-kv0"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="WRX-kQ-rca" secondAttribute="bottom" id="IaR-VM-sdb"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="WRX-kQ-rca" secondAttribute="trailing" id="bB7-Fd-Yo4"/>
+                            <constraint firstItem="WRX-kQ-rca" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="ibs-H7-nx0"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Photo Library" id="KR5-6z-WEQ"/>
