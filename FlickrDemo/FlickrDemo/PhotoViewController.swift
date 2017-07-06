@@ -54,7 +54,7 @@ class PhotoViewController: UIViewController, UICollectionViewDataSource {
                     self.photoImages[index] = UIImage(data: data)
                     self.photoCollectionView.reloadItems(at: [IndexPath(row: index, section: 0)])
                 case .failure(let error):
-                    print("ERROR in createImage \(error)")
+                    print("ERROR in createImage \(String(describing: error))")
                     self.photoImages[index] = nil
                 }
             }
