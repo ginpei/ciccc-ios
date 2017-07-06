@@ -8,16 +8,14 @@ The API requires API keys as well as another services, and also they shouldn't b
 
 ("Secret" key should be secret, on the other hand, actually, just "Key" don't have to be hidden usually.)
 
-## Create keys
+## Find or create keys
 
-Log in and open "The App Garden":
-
-- [The App Garden on Flickr](https://www.flickr.com/services/)
-
-1. Follow the link "Apps By You" at "Your Apps" on right side.
-2. You should see the list of your app. If you haven't created anything, try "Get Another Key".
-3. Open your app's dashboard from the name and click the link "Admin → View" on right side.
-4. "Key" is the one. ("Secret" is another one.)
+1. Log in and open "The App Garden": [https://www.flickr.com/services/](https://www.flickr.com/services/)
+2. Follow the link "Apps By You" at **"Your Apps"** on right side.
+3. You should see **the list of your apps**. If you haven't created anything, try **"Get Another Key"**.
+4. Open your app's dashboard from **the app's name**
+5. Click the link **"Admin → View"** on right side.
+6. **"Key"** is the one. ("Secret" is another one.)
 
 ## Set environment variables
 
@@ -36,3 +34,5 @@ Push "+" button and add a variable for the key.
 ```swift
 let apiKey = ProcessInfo.processInfo.environment["FLICKR_API_KEY"]!
 ```
+
+There you go. :)
