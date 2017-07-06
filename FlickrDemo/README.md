@@ -23,11 +23,9 @@ Open sheme settings by: FlickerDemo → Edit Scheme.
 
 ![FlickerDemo → Edit Scheme](doc/envvar-1.png)
 
-Find "Environment Variables" under Arguments.
+Find "Environment Variables" under Arguments. Push "+" button and add a variable for the key.
 
 ![Arguments → Environment Variables](doc/envvar-2.png)
-
-Push "+" button and add a variable for the key.
 
 ## Read the environment variables
 
