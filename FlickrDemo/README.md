@@ -10,7 +10,7 @@ The API requires API keys as well as another services, and also they shouldn't b
 
 ## Create keys
 
-Open "The App Garden":
+Log in and open "The App Garden":
 
 - [The App Garden on Flickr](https://www.flickr.com/services/)
 
