@@ -26,8 +26,8 @@ class PhotoViewController: UIViewController, UICollectionViewDataSource {
         store.fetchInterestingnessPhotos() {
             (result, response) in
             
-            self.showResult(result)
             OperationQueue.main.addOperation {
+                self.showResult(result)
                 self.photosLoadingIndicatorView.stopAnimating()
             }
         }
@@ -38,12 +38,10 @@ class PhotoViewController: UIViewController, UICollectionViewDataSource {
         case .success(let photos):
             for (i, p) in photos.enumerated() {
                 self.photos.append(p)
-                self.photoImages.append(nil)
+                photoImages.append(nil)
                 createImage(p, at: i)
             }
-            OperationQueue.main.addOperation {
-                self.photoCollectionView.reloadData()
-            }
+            self.photoCollectionView.reloadData()
         case let .failure(error):
             print("--- ERR \(String(describing: error))")
         }
