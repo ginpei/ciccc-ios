@@ -34,6 +34,9 @@ class PhotoViewController: UIViewController, UICollectionViewDataSource {
     }
     
     func showResult(_ result:PhotoResult) {
+        self.photos.removeAll()
+        photoImages.removeAll()
+        
         switch result {
         case .success(let photos):
             for (i, p) in photos.enumerated() {
