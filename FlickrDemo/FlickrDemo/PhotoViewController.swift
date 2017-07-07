@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PhotoViewController: UIViewController, UICollectionViewDataSource {
+class PhotoViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     @IBOutlet weak var photoCollectionView: UICollectionView!
     @IBOutlet weak var photosLoadingIndicatorView: UIActivityIndicatorView!
     
@@ -86,6 +86,21 @@ class PhotoViewController: UIViewController, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return photos.count
     }
+    
+    /*
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        let photo = photos[indexPath.row]
+        store.fetchImage(for: photo) {
+            (result) in
+            
+            guard let photoIndex = self.photos.index(of: photo),
+                case let .success(image) = result else { return }
+            let cell = self.photoCollectionView.cellForItem(at: IndexPath(item: photoIndex, section: 0)) as! PhotoCollectionViewCell
+//            cell.update(with: image)  // not implemented the method yet
+            print("update cell: [\(cell)] with: [\(image)]")
+        }
+    }
+    */
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! PhotoCollectionViewCell
