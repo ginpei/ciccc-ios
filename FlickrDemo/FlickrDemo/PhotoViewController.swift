@@ -95,14 +95,17 @@ class PhotoViewController: UIViewController, UICollectionViewDataSource, UIColle
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        // do nothing if fetched
         let row = indexPath.row
-        if self.photoImages[row] != nil {
+        
+        // do nothing if fetched or being fetched
+        if photoImages.keys.contains(row) {
             return
         }
         
-        // TODO skip if fetching
+        // declare this item is now being fetched
+        photoImages.updateValue(nil, forKey: row)
         
+        // fetch
         let photo = photos[row]
         store.fetchImage(for: photo) {
             (result) in
