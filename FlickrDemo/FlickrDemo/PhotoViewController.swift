@@ -10,6 +10,7 @@ import UIKit
 
 class PhotoViewController: UIViewController, UICollectionViewDataSource {
     @IBOutlet weak var photoCollectionView: UICollectionView!
+    @IBOutlet weak var photosLoadingIndicatorView: UIActivityIndicatorView!
     
     let cellIdentifier = "PhotoCollectionViewCell"
     let items = [UIColor.black, UIColor.red, UIColor.blue, UIColor.orange, UIColor.darkGray, UIColor.green, UIColor.brown]
@@ -21,10 +22,14 @@ class PhotoViewController: UIViewController, UICollectionViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        photosLoadingIndicatorView.startAnimating()
         store.fetchInterestingnessPhotos() {
             (result, response) in
             
             self.showResult(result)
+            OperationQueue.main.addOperation {
+                self.photosLoadingIndicatorView.stopAnimating()
+            }
         }
     }
     

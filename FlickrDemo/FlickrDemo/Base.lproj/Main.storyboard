@@ -39,7 +39,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KUd-jX-yvD">
-                                                    <rect key="frame" x="0.0" y="0.0" width="70" height="50"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
                                                 </imageView>
                                             </subviews>
                                         </view>
@@ -59,6 +59,10 @@
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="rcD-le-sUt"/>
                                 </connections>
                             </collectionView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="EYe-N8-Myw">
+                                <rect key="frame" x="177" y="323" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -71,6 +75,7 @@
                     <navigationItem key="navigationItem" title="Photo Library" id="KR5-6z-WEQ"/>
                     <connections>
                         <outlet property="photoCollectionView" destination="WRX-kQ-rca" id="aEf-5H-ioL"/>
+                        <outlet property="photosLoadingIndicatorView" destination="EYe-N8-Myw" id="c0M-rO-ovC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
