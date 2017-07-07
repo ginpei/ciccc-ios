@@ -17,7 +17,7 @@ class PhotoViewController: UIViewController, UICollectionViewDataSource, UIColle
     
     var store: PhotoStore!
     var photos = [Photo]()
-    var photoImages = [UIImage?]()
+    var photoImages = [Int: UIImage?]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,11 +39,7 @@ class PhotoViewController: UIViewController, UICollectionViewDataSource, UIColle
         
         switch result {
         case .success(let photos):
-            for (i, p) in photos.enumerated() {
-                self.photos.append(p)
-                photoImages.append(nil)
-                createImage(p, at: i)
-            }
+            self.photos.append(contentsOf: photos)
             self.photoCollectionView.reloadData()
         case let .failure(error):
             print("--- ERR \(String(describing: error))")
@@ -87,24 +83,40 @@ class PhotoViewController: UIViewController, UICollectionViewDataSource, UIColle
         return photos.count
     }
     
-    /*
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! PhotoCollectionViewCell
+        if let i = photoImages[indexPath.row] {
+            cell.imageView.image = i
+        }
+        else {
+            cell.imageView.image = nil
+        }
+        return cell
+    }
+    
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        let photo = photos[indexPath.row]
+        // do nothing if fetched
+        let row = indexPath.row
+        if self.photoImages[row] != nil {
+            return
+        }
+        
+        // TODO skip if fetching
+        
+        let photo = photos[row]
         store.fetchImage(for: photo) {
             (result) in
             
-            guard let photoIndex = self.photos.index(of: photo),
-                case let .success(image) = result else { return }
-            let cell = self.photoCollectionView.cellForItem(at: IndexPath(item: photoIndex, section: 0)) as! PhotoCollectionViewCell
-//            cell.update(with: image)  // not implemented the method yet
-            print("update cell: [\(cell)] with: [\(image)]")
+            OperationQueue.main.addOperation {
+                switch result {
+                case let .success(data):
+                    self.photoImages[row] = UIImage(data: data)
+                    self.photoCollectionView.reloadItems(at: [indexPath])
+                case let .failure(error):
+                    print("ERROR in createImage \(String(describing: error))")
+                }
+                
+            }
         }
-    }
-    */
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! PhotoCollectionViewCell
-        cell.imageView.image = photoImages[indexPath.row]
-        return cell
     }
 }
