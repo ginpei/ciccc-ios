@@ -13,7 +13,6 @@ class PhotoViewController: UIViewController {
     @IBOutlet weak var photosLoadingIndicatorView: UIActivityIndicatorView!
     
     let cellIdentifier = "PhotoCollectionViewCell"
-    let items = [UIColor.black, UIColor.red, UIColor.blue, UIColor.orange, UIColor.darkGray, UIColor.green, UIColor.brown]
     
     var store: PhotoStore!
     var photos = [Photo]()
