@@ -12,8 +12,6 @@ class PhotoViewController: UIViewController {
     @IBOutlet weak var photoCollectionView: UICollectionView!
     @IBOutlet weak var photosLoadingIndicatorView: UIActivityIndicatorView!
     
-    let cellIdentifier = "PhotoCollectionViewCell"
-    
     var store: PhotoStore!
     var photos = [Photo]()
     var photoImages = [Int: UIImage?]()
@@ -97,7 +95,7 @@ extension PhotoViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! PhotoCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoCollectionViewCell.identifier, for: indexPath) as! PhotoCollectionViewCell
         if let i = photoImages[indexPath.row] {
             cell.imageView.image = i
         }
