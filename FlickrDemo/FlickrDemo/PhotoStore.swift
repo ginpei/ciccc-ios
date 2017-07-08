@@ -13,6 +13,10 @@ enum PhotoResult {
     case failure(Error?)
 }
 
+enum PhotoError: Error {
+    case unhandledError
+}
+
 enum ImageResult {
     case success(Data)
     case failure(Error?)
@@ -54,7 +58,7 @@ class PhotoStore {
         let task = session.dataTask(with: request) {
             (data, response, error) in
             
-            var result: ImageResult = .failure(ImageError.imageCreationError)
+            var result: ImageResult
             if error != nil {
                 result = .failure(error)
             }
@@ -71,19 +75,23 @@ class PhotoStore {
         task.resume()
     }
     
-    func fetchInterestingnessPhotos(completionHandler: @escaping (PhotoResult, URLResponse?) -> Void) {
+    func fetchInterestingnessPhotos(completionHandler: @escaping (PhotoResult) -> Void) {
         let url = FlickrAPI.interestingnessURL()
         let request = URLRequest(url: url)
         let task = session.dataTask(with: request) {
             (data, response, error) in
             
+            var result: PhotoResult
+            if error != nil {
+                result = .failure(error)
+            }
             if let d = data {
-                let result = FlickrAPI.photos(fromJSON: d)
-                completionHandler(result, response)
+                result = FlickrAPI.photos(fromJSON: d)
             }
             else {
-                completionHandler(PhotoResult.failure(error), response)
+                result = .failure(PhotoError.unhandledError)
             }
+            completionHandler(result)
         }
         
         task.resume()

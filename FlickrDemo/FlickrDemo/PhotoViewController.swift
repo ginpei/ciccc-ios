@@ -47,7 +47,7 @@ class PhotoViewController: UIViewController {
     func prepareList() {
         loading = true
         store.fetchInterestingnessPhotos() {
-            (result, response) in
+            (result) in
             
             self.loading = false
             
