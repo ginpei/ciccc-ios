@@ -18,17 +18,36 @@ class PhotoViewController: UIViewController, UICollectionViewDataSource, UIColle
     var store: PhotoStore!
     var photos = [Photo]()
     var photoImages = [Int: UIImage?]()
+    
+    var _loading = false
+    var loading: Bool {
+        get {
+            return _loading
+        }
+        set(v) {
+            _loading = v
+            
+            OperationQueue.main.addOperation {
+                if v {
+                    self.photosLoadingIndicatorView.startAnimating()
+                }
+                else {
+                    self.photosLoadingIndicatorView.stopAnimating()
+                }
+            }
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        photosLoadingIndicatorView.startAnimating()
+        loading = true
         store.fetchInterestingnessPhotos() {
             (result, response) in
             
             OperationQueue.main.addOperation {
                 self.showResult(result)
-                self.photosLoadingIndicatorView.stopAnimating()
+                self.loading = false
             }
         }
     }
