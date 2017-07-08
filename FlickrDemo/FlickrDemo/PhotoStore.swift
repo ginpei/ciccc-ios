@@ -32,28 +32,6 @@ class PhotoStore {
         return URLSession(configuration: config)
     }()
     
-    func fetchThumbnail(for photo: Photo, completionHandler: @escaping (ImageResult) -> Void) {
-        let request = URLRequest(url: photo.thumbnailUrl)
-        let task = session.dataTask(with: request) {
-            (data, response, error) in
-            
-            var result: ImageResult
-            if error != nil {
-                result = .failure(error)
-            }
-            else if let d = data
-            {
-                result = .success(d)
-            }
-            else {
-                result = .failure(ImageError.imageCreationError)
-            }
-            
-            completionHandler(result)
-        }
-        task.resume()
-    }
-    
     func fetchInterestingnessPhotos(completionHandler: @escaping (PhotoResult) -> Void) {
         let url = FlickrAPI.interestingnessURL()
         let request = URLRequest(url: url)
@@ -73,6 +51,28 @@ class PhotoStore {
             completionHandler(result)
         }
         
+        task.resume()
+    }
+    
+    func fetchThumbnail(for photo: Photo, completionHandler: @escaping (ImageResult) -> Void) {
+        let request = URLRequest(url: photo.thumbnailUrl)
+        let task = session.dataTask(with: request) {
+            (data, response, error) in
+            
+            var result: ImageResult
+            if error != nil {
+                result = .failure(error)
+            }
+            else if let d = data
+            {
+                result = .success(d)
+            }
+            else {
+                result = .failure(ImageError.imageCreationError)
+            }
+            
+            completionHandler(result)
+        }
         task.resume()
     }
 }
