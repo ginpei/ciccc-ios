@@ -41,10 +41,10 @@ class PhotoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        buildList()
+        prepareList()
     }
     
-    func buildList() {
+    func prepareList() {
         loading = true
         store.fetchInterestingnessPhotos() {
             (result, response) in
@@ -62,13 +62,12 @@ class PhotoViewController: UIViewController {
                     self.photoCollectionView.reloadData()
                 }
             case let .failure(error):
-                print("--- ERR \(String(describing: error))")
+                print("--- ERROR in prepareList \(String(describing: error))")
             }
-
         }
     }
     
-    func createImage(_ photo: Photo, at index: Int) {
+    func prepareImage(for photo: Photo, at index: Int) {
         store.fetchImage(for: photo) {
             (result) in
             
@@ -78,7 +77,7 @@ class PhotoViewController: UIViewController {
                     self.photoImages[index] = UIImage(data: data)
                     self.photoCollectionView.reloadItems(at: [IndexPath(row: index, section: 0)])
                 case .failure(let error):
-                    print("ERROR in createImage \(String(describing: error))")
+                    print("--- ERROR in prepareImage \(String(describing: error))")
                     self.photoImages[index] = nil
                 }
             }
@@ -121,8 +120,8 @@ extension PhotoViewController: UICollectionViewDelegate {
         // declare this item is now being fetched
         photoImages.updateValue(nil, forKey: row)
         
-        // fetch
+        // fetch and update
         let photo = photos[row]
-        self.createImage(photo, at: row)
+        self.prepareImage(for: photo, at: row)
     }
 }
