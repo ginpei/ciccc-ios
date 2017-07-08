@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PhotoViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class PhotoViewController: UIViewController {
     @IBOutlet weak var photoCollectionView: UICollectionView!
     @IBOutlet weak var photosLoadingIndicatorView: UIActivityIndicatorView!
     
@@ -90,7 +90,9 @@ class PhotoViewController: UIViewController, UICollectionViewDataSource, UIColle
         
         self.photoImages.removeAll()
     }
-    
+}
+
+extension PhotoViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return photos.count
     }
@@ -105,7 +107,9 @@ class PhotoViewController: UIViewController, UICollectionViewDataSource, UIColle
         }
         return cell
     }
-    
+}
+
+extension PhotoViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         let row = indexPath.row
         
