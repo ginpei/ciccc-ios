@@ -64,20 +64,22 @@ class PhotoViewController: UIViewController {
         }
     }
     
-    func prepareImage(for photo: Photo, at index: Int) {
+    func prepareImage(of photo: Photo, at indexPath: IndexPath) {
+        let row = indexPath.row
+        
         store.fetchThumbnail(for: photo) {
             (result) in
             
             switch result {
             case .success(let data):
-                self.photoImages[index] = UIImage(data: data)
+                self.photoImages[row] = UIImage(data: data)
                 
                 OperationQueue.main.addOperation {
-                    self.photoCollectionView.reloadItems(at: [IndexPath(row: index, section: 0)])
+                    self.photoCollectionView.reloadItems(at: [indexPath])
                 }
             case .failure(let error):
                 print("--- ERROR in prepareImage \(String(describing: error))")
-                self.photoImages[index] = nil
+                self.photoImages[row] = nil
             }
         }
     }
@@ -120,6 +122,6 @@ extension PhotoViewController: UICollectionViewDelegate {
         
         // fetch and update
         let photo = photos[row]
-        self.prepareImage(for: photo, at: row)
+        self.prepareImage(of: photo, at: indexPath)
     }
 }
