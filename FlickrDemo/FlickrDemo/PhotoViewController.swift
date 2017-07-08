@@ -71,15 +71,16 @@ class PhotoViewController: UIViewController {
         store.fetchImage(for: photo) {
             (result) in
             
-            OperationQueue.main.addOperation {
-                switch result {
-                case .success(let data):
-                    self.photoImages[index] = UIImage(data: data)
+            switch result {
+            case .success(let data):
+                self.photoImages[index] = UIImage(data: data)
+                
+                OperationQueue.main.addOperation {
                     self.photoCollectionView.reloadItems(at: [IndexPath(row: index, section: 0)])
-                case .failure(let error):
-                    print("--- ERROR in prepareImage \(String(describing: error))")
-                    self.photoImages[index] = nil
                 }
+            case .failure(let error):
+                print("--- ERROR in prepareImage \(String(describing: error))")
+                self.photoImages[index] = nil
             }
         }
     }
