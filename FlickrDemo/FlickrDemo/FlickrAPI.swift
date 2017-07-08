@@ -58,7 +58,7 @@ struct FlickrAPI {
         return components.url!
     }
     
-    static func photos(fromJSON data: Data) -> PhotoResult {
+    static func photos(fromJSON data: Data) -> PhotosResult {
         do {
             let json = try JSONSerialization.jsonObject(with: data, options: [])
             

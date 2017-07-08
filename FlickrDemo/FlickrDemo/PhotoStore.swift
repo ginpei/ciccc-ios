@@ -8,12 +8,12 @@
 
 import Foundation
 
-enum PhotoResult {
+enum PhotosResult {
     case success([Photo])
     case failure(Error?)
 }
 
-enum PhotoError: Error {
+enum PhotosError: Error {
     case unhandledError
 }
 
@@ -32,13 +32,13 @@ class PhotoStore {
         return URLSession(configuration: config)
     }()
     
-    func fetchInterestingnessPhotos(completionHandler: @escaping (PhotoResult) -> Void) {
+    func fetchInterestingnessPhotos(completionHandler: @escaping (PhotosResult) -> Void) {
         let url = FlickrAPI.interestingnessURL()
         let request = URLRequest(url: url)
         let task = session.dataTask(with: request) {
             (data, response, error) in
             
-            var result: PhotoResult
+            var result: PhotosResult
             if error != nil {
                 result = .failure(error)
             }
@@ -46,7 +46,7 @@ class PhotoStore {
                 result = FlickrAPI.photos(fromJSON: d)
             }
             else {
-                result = .failure(PhotoError.unhandledError)
+                result = .failure(PhotosError.unhandledError)
             }
             completionHandler(result)
         }
