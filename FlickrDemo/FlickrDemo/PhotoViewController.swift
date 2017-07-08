@@ -123,19 +123,6 @@ extension PhotoViewController: UICollectionViewDelegate {
         
         // fetch
         let photo = photos[row]
-        store.fetchImage(for: photo) {
-            (result) in
-            
-            OperationQueue.main.addOperation {
-                switch result {
-                case let .success(data):
-                    self.photoImages[row] = UIImage(data: data)
-                    self.photoCollectionView.reloadItems(at: [indexPath])
-                case let .failure(error):
-                    print("ERROR in createImage \(String(describing: error))")
-                }
-                
-            }
-        }
+        self.createImage(photo, at: row)
     }
 }
