@@ -41,27 +41,30 @@ class PhotoViewController: UIViewController, UICollectionViewDataSource, UIColle
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        buildList()
+    }
+    
+    func buildList() {
         loading = true
         store.fetchInterestingnessPhotos() {
             (result, response) in
             
-            OperationQueue.main.addOperation {
-                self.showResult(result)
-                self.loading = false
+            self.loading = false
+            
+            self.photos.removeAll()
+            self.photoImages.removeAll()
+            
+            switch result {
+            case .success(let newPhotos):
+                self.photos.append(contentsOf: newPhotos)
+                
+                OperationQueue.main.addOperation {
+                    self.photoCollectionView.reloadData()
+                }
+            case let .failure(error):
+                print("--- ERR \(String(describing: error))")
             }
-        }
-    }
-    
-    func showResult(_ result:PhotoResult) {
-        self.photos.removeAll()
-        photoImages.removeAll()
-        
-        switch result {
-        case .success(let photos):
-            self.photos.append(contentsOf: photos)
-            self.photoCollectionView.reloadData()
-        case let .failure(error):
-            print("--- ERR \(String(describing: error))")
+
         }
     }
     
