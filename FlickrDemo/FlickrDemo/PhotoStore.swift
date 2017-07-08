@@ -32,27 +32,6 @@ class PhotoStore {
         return URLSession(configuration: config)
     }()
     
-//    private func processPhotosRequest(data: Data?, error: Error) -> PhotoResult {
-//        guard let jsonData = data else {
-//            return .failure(error)
-//        }
-//        return FlickrAPI.photos(fromJSON: data)
-//    }
-    
-//    private func processImageRequest(data: Data?, error: Error?) -> ImageResult {
-//        if error != nil {
-//            return .failure(error)
-//        }
-//        else if let imageData = data,
-//            let image = UIImage(data: imageData)
-//        {
-//            return .success(image)
-//        }
-//        else {
-//            return .failure(ImageError.imageCreationError)
-//        }
-//    }
-    
     func fetchThumbnail(for photo: Photo, completionHandler: @escaping (ImageResult) -> Void) {
         let request = URLRequest(url: photo.thumbnailUrl)
         let task = session.dataTask(with: request) {
