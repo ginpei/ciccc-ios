@@ -11,19 +11,22 @@ import Foundation
 class Photo {
     let title: String
     let url: URL
+    let thumbnailUrl: URL
     let photoID: String
     let dateTaken: Date
     
     init() {
         self.title = ""
         self.url = URL(string: "https://example.com")!
+        self.thumbnailUrl = URL(string: "https://example.com")!
         self.photoID = ""
         self.dateTaken = Date()
     }
     
-    init(title: String, url: URL, photoID: String, dateTaken: Date) {
+    init(title: String, url: URL, thumbnailUrl: URL, photoID: String, dateTaken: Date) {
         self.title = title
         self.url = url
+        self.thumbnailUrl = thumbnailUrl
         self.photoID = photoID
         self.dateTaken = dateTaken
     }

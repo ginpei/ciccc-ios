@@ -68,7 +68,7 @@ class PhotoViewController: UIViewController {
     }
     
     func prepareImage(for photo: Photo, at index: Int) {
-        store.fetchImage(for: photo) {
+        store.fetchThumbnail(for: photo) {
             (result) in
             
             switch result {

@@ -49,8 +49,8 @@ class PhotoStore {
 //        }
 //    }
     
-    func fetchImage(for photo: Photo, completionHandler: @escaping (ImageResult) -> Void) {
-        let request = URLRequest(url: photo.url)
+    func fetchThumbnail(for photo: Photo, completionHandler: @escaping (ImageResult) -> Void) {
+        let request = URLRequest(url: photo.thumbnailUrl)
         let task = session.dataTask(with: request) {
             (data, response, error) in
             

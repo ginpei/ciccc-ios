@@ -91,10 +91,12 @@ struct FlickrAPI {
         if let photoID = json["id"] as? String,
             let title = json["title"] as? String,
             let url = photoUrlOf(json: json),
+            let thumbnailUrlString = json["url_s"] as? String,
+            let thumbnailUrl = URL(string: thumbnailUrlString),
             let dateTakenString = json["datetaken"] as? String,
             let dateTaken = dateFormatter.date(from: dateTakenString)
         {
-            return Photo(title: title, url: url, photoID: photoID, dateTaken: dateTaken)
+            return Photo(title: title, url: url, thumbnailUrl: thumbnailUrl, photoID: photoID, dateTaken: dateTaken)
         }
         else {
             NSLog("Failed to create a Photo object: %@", json)
@@ -105,10 +107,7 @@ struct FlickrAPI {
     static func photoUrlOf(json: [String: Any]) -> URL? {
         var urlString: String? = nil
         
-        if let u = json["url_s"] as? String {
-            urlString = u
-        }
-        else if let u = json["url_h"] as? String {
+        if let u = json["url_h"] as? String {
             urlString = u
         }
         else if let u = json["url_b"] as? String {
