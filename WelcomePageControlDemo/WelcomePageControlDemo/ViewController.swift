@@ -9,29 +9,29 @@
 import UIKit
 
 class ViewController: UIViewController {
+    @IBOutlet weak var pageCollectionView: UICollectionView!
     
     var pages = [
-        Page(title: "Ichi"),
-        Page(title: "Ni"),
-        Page(title: "San"),
+        Page(title: "Ichi", colorName: "red"),
+        Page(title: "Ni", colorName: "green"),
+        Page(title: "San", colorName: "blue"),
         ]
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        pageCollectionView.isPagingEnabled = true
+        pageCollectionView.collectionViewLayout = {
+            let layout = UICollectionViewFlowLayout()
+            layout.scrollDirection = .horizontal
+            layout.minimumLineSpacing = 0
+            return layout
+        }()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-}
-
-class Page {
-    var title: String!
-    
-    init(title: String) {
-        self.title = title
     }
 }
 
@@ -46,6 +46,24 @@ extension ViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PageCollectionViewCell.identifier, for: indexPath) as! PageCollectionViewCell
         cell.titleLabel.text = page.title
         
+        var color: UIColor?
+        switch page.colorName {
+        case "red":
+            color = UIColor.red
+        case "green":
+            color = UIColor.green
+        case "blue":
+            color = UIColor.blue
+        default: break
+        }
+        cell.backgroundColor = color
+        
         return cell
+    }
+}
+
+extension ViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: view.frame.width, height: view.frame.height)
     }
 }

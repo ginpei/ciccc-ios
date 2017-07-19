@@ -13,6 +13,7 @@
 		E48F6B261F1EC95A00114D59 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E48F6B251F1EC95A00114D59 /* Assets.xcassets */; };
 		E48F6B291F1EC95A00114D59 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E48F6B271F1EC95A00114D59 /* LaunchScreen.storyboard */; };
 		E48F6B3B1F2003C900114D59 /* PageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48F6B3A1F2003C900114D59 /* PageCollectionViewCell.swift */; };
+		E48F6B3D1F201C3D00114D59 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48F6B3C1F201C3D00114D59 /* Page.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		E48F6B281F1EC95A00114D59 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E48F6B2A1F1EC95A00114D59 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E48F6B3A1F2003C900114D59 /* PageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageCollectionViewCell.swift; sourceTree = "<group>"; };
+		E48F6B3C1F201C3D00114D59 /* Page.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 			children = (
 				E48F6B1E1F1EC95A00114D59 /* AppDelegate.swift */,
 				E48F6B201F1EC95A00114D59 /* ViewController.swift */,
+				E48F6B3C1F201C3D00114D59 /* Page.swift */,
 				E48F6B3A1F2003C900114D59 /* PageCollectionViewCell.swift */,
 				E48F6B221F1EC95A00114D59 /* Main.storyboard */,
 				E48F6B251F1EC95A00114D59 /* Assets.xcassets */,
@@ -141,6 +144,7 @@
 			files = (
 				E48F6B211F1EC95A00114D59 /* ViewController.swift in Sources */,
 				E48F6B1F1F1EC95A00114D59 /* AppDelegate.swift in Sources */,
+				E48F6B3D1F201C3D00114D59 /* Page.swift in Sources */,
 				E48F6B3B1F2003C900114D59 /* PageCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
