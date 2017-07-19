@@ -17,10 +17,17 @@ class ViewController: UIViewController {
         Page(title: "Ni", colorName: "green"),
         Page(title: "San", colorName: "blue"),
         ]
+    var pageControlBottomConstraint: NSLayoutConstraint!
+    let pageControlBottomMargin = CGFloat(-40)
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        preparePageCollectionView()
+        preparePageControl()
+    }
+    
+    func preparePageCollectionView() {
         pageCollectionView.isPagingEnabled = true
         pageCollectionView.collectionViewLayout = {
             let layout = UICollectionViewFlowLayout()
@@ -28,8 +35,14 @@ class ViewController: UIViewController {
             layout.minimumLineSpacing = 0
             return layout
         }()
-        
+    }
+    
+    func preparePageControl() {
         pageControl.numberOfPages = pages.count
+        pageControl.translatesAutoresizingMaskIntoConstraints = false
+        pageControl.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        pageControlBottomConstraint = pageControl.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: pageControlBottomMargin)
+        pageControlBottomConstraint.isActive = true
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,6 +53,23 @@ class ViewController: UIViewController {
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         let pageNumber = Int(targetContentOffset.pointee.x / view.frame.width)
         pageControl.currentPage = pageNumber
+        
+        updatePageControlPosition(pageNumber: pageNumber)
+    }
+    
+    func updatePageControlPosition(pageNumber: Int) {
+        var constant: CGFloat
+        if pageNumber == pages.count - 1 {
+            constant = pageControl.frame.height
+        }
+        else {
+            constant = pageControlBottomMargin
+        }
+        
+        UIView.animate(withDuration: 0.3, animations: {
+            self.pageControlBottomConstraint.constant = constant
+            self.view.layoutIfNeeded()
+        })
     }
 }
 
