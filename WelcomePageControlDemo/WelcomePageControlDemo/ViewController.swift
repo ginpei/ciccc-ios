@@ -10,6 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
     @IBOutlet weak var pageCollectionView: UICollectionView!
+    @IBOutlet weak var pageControl: UIPageControl!
     
     var pages = [
         Page(title: "Ichi", colorName: "red"),
@@ -27,11 +28,18 @@ class ViewController: UIViewController {
             layout.minimumLineSpacing = 0
             return layout
         }()
+        
+        pageControl.numberOfPages = pages.count
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        let pageNumber = Int(targetContentOffset.pointee.x / view.frame.width)
+        pageControl.currentPage = pageNumber
     }
 }
 
